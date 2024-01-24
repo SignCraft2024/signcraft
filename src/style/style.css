@@ -1,0 +1,25 @@
+.singCraft 
+{
+    border-radius: 50px;
+    height: 100px;
+    margin-left: 100px;
+}
+
+.bg-sign 
+{
+    background-color: #e4dcd1;
+}
+
+.marg-sign 
+{
+    margin-right: 90px;
+}
+
+.text-dark
+{
+    color: black;
+}
+.text-sign
+{
+    font-family: halimum;
+}
