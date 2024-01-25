@@ -1,34 +1,23 @@
 import './Pdf.css';
-import React from 'react';
+import { useState } from 'react';
 import Header from './header/Header';
+import { Drop } from './Drop';
+import { blobToURL } from '../../utils/Utils';
 
 function Pdf() {
-	const styles = {
-		container: {
-			maxWidth: 900,
-			margin: '0 auto',
-		},
-		sigBlock: {
-			display: 'inline-block',
-			border: '1px solid #000',
-		},
-		documentBlock: {
-			maxWidth: 800,
-			margin: '20px auto',
-			marginTop: 8,
-			border: '1px solid #999',
-		},
-		controls: {
-			maxWidth: 800,
-			margin: '0 auto',
-			marginTop: 8,
-		},
+	const [pdf, setPdf] = useState<null | string | ArrayBuffer>(null);
+
+	const onLoaded = async (files: Blob[]) => {
+		const URL: any = await blobToURL(files[0]);
+		setPdf(URL);
 	};
 
 	return (
 		<div>
 			<Header />
-			<div style={styles.container}></div>
+			<div className="container">
+				{!pdf ? <Drop onLoaded={onLoaded} /> : null}
+			</div>
 		</div>
 	);
 }
