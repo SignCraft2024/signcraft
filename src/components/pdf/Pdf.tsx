@@ -1,11 +1,19 @@
 import './Pdf.css';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Header from './header/Header';
 import { Drop } from './Drop';
 import { blobToURL } from '../../utils/Utils';
+import { Document, Page, pdfjs } from 'react-pdf';
+import { PagingControl } from './PagingControl/PagingControl';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 function Pdf() {
 	const [pdf, setPdf] = useState<null | string | ArrayBuffer>(null);
+	const [totalPages, setTotalPages] = useState<number>(0);
+	const [pageDetails, setPageDetails] = useState(null);
+	const [pageNum, setPageNum] = useState<number>(0);
+	const documentRef = useRef(null);
 
 	const onLoaded = async (files: Blob[]) => {
 		const URL: any = await blobToURL(files[0]);
@@ -17,6 +25,31 @@ function Pdf() {
 			<Header />
 			<div className="container">
 				{!pdf ? <Drop onLoaded={onLoaded} /> : null}
+				{pdf ? (
+					<div>
+						<div ref={documentRef} className="document-block">
+							<Document
+								file={pdf}
+								onLoadSuccess={(document: any) => {
+									setTotalPages(document.numPages);
+								}}
+							>
+								<Page
+									pageNumber={pageNum + 1}
+									width={800}
+									onLoadSuccess={(page: any) => {
+										setPageDetails(page);
+									}}
+								/>
+							</Document>
+						</div>
+						<PagingControl
+							totalPages={totalPages}
+							pageNum={pageNum}
+							setPageNum={setPageNum}
+						/>
+					</div>
+				) : null}
 			</div>
 		</div>
 	);
