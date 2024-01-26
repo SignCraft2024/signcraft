@@ -8,7 +8,7 @@ import { PagingControl } from './PagingControl/PagingControl';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
-function Pdf() {
+const Pdf = () => {
 	const [pdf, setPdf] = useState<null | string | ArrayBuffer>(null);
 	const [totalPages, setTotalPages] = useState<number>(0);
 	const [pageDetails, setPageDetails] = useState(null);
@@ -16,7 +16,7 @@ function Pdf() {
 	const documentRef = useRef(null);
 
 	const onLoaded = async (files: Blob[]) => {
-		const URL: any = await blobToURL(files[0]);
+		const URL: string | null = await blobToURL(files[0]);
 		setPdf(URL);
 	};
 
