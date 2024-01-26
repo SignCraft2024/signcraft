@@ -13,7 +13,7 @@ button:focus {
 	display: inline-block;
 	border: 1px solid #000;
 }
-.documentBlock {
+.document-block {
 	max-width: 800;
 	margin: 20px auto;
 	margin-top: 8;
