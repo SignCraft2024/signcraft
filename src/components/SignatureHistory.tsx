@@ -12,7 +12,20 @@ interface SignatureHistoryProps {
 }
 
 const SignatureHistory: React.FC<SignatureHistoryProps> = ({ userId }) => {
-  const [signatures, setSignatures] = useState<Signature[]>([]);
+  const [signatures, setSignatures] = useState<Signature[]>([
+    {
+      id: 1,
+      documentName: "Contrat de location",
+      date: "25/01/2024",
+      status: "Signé",
+    },
+    {
+      id: 2,
+      documentName: "Accord de confidentialité",
+      date: "20/01/2024",
+      status: "En attente",
+    },
+  ]);
 
   useEffect(() => {
     const fetchSignatures = async () => {
@@ -31,13 +44,24 @@ const SignatureHistory: React.FC<SignatureHistoryProps> = ({ userId }) => {
   return (
     <div>
       <h2>Historique des signatures</h2>
-      <ul>
-        {signatures.map((signature) => (
-          <li key={signature.id}>
-            Document : {signature.documentName}, Date : {signature.date}, Statut : {signature.status}
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Document</th>
+            <th>Date</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          {signatures.map((signature) => (
+            <tr key={signature.id}>
+              <td>{signature.documentName}</td>
+              <td>{signature.date}</td>
+              <td>{signature.status}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
