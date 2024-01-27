@@ -12,7 +12,7 @@ type ButtonProps = {
 	noHover?: boolean;
 	id?: string;
 	small?: boolean | null;
-	disabled: boolean | null;
+	disabled?: boolean | null;
 	marginRight?: string;
 };
 
