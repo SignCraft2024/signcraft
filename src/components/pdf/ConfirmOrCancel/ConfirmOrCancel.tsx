@@ -3,14 +3,14 @@ import React from 'react';
 import { Button } from '../Button/Button';
 
 export const ConfirmOrCancel: React.FC<{
-	onClose: () => void;
+	onCancel: () => void;
 	onConfirm: () => void;
 	confirmTitle?: string;
 	leftBlock?: any;
 	hideCancel?: boolean;
 	disabled?: boolean;
 }> = ({
-	onClose,
+	onCancel,
 	onConfirm,
 	confirmTitle,
 	leftBlock,
@@ -23,7 +23,11 @@ export const ConfirmOrCancel: React.FC<{
 			<div>{leftBlock}</div>
 			<div>
 				{!hideCancel && (
-					<Button title="Cancel" onClick={onClose} style={{ marginRight: 8 }} />
+					<Button
+						title="Cancel"
+						onClick={onCancel}
+						style={{ marginRight: 8 }}
+					/>
 				)}
 				<Button
 					title={confirmTitle}

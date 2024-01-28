@@ -13,7 +13,7 @@ type ButtonProps = {
 	id?: string;
 	small?: boolean | null;
 	disabled?: boolean | null;
-	marginRight?: string;
+	marginRight?: number;
 };
 
 export const Button: React.FC<ButtonProps> = ({
