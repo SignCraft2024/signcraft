@@ -1,4 +1,4 @@
-import './ConfirmOrCancel.css'
+import './ConfirmOrCancel.css';
 import React from 'react';
 import { Button } from '../Button/Button';
 
