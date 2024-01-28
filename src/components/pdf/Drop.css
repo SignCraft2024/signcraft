@@ -1,9 +1,9 @@
-.container {
+.drop-container {
 	text-align: center;
 	border: 1px solid rgb(208, 227, 239);
 	padding: 20;
 	margin-top: 12;
-	color: 'hsl(218,49%,66%)';
+	color: hsl(218,49%,66%);
 	font-size: 18;
 	font-weight: 600;
 	border-radius: 4;

@@ -17,7 +17,7 @@ export const Drop: React.FC<{ onLoaded: (files: Blob[]) => void }> = ({
 	});
 
 	return (
-		<div {...getRootProps()} className="container">
+		<div {...getRootProps()} className="drop-container">
 			<input {...getInputProps()} />
 			{isDragActive ? <p>Drop a PDF here</p> : <p>Drag a PDF here</p>}
 		</div>
