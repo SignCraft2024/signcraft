@@ -1,4 +1,7 @@
+import { initializeApp } from 'firebase/app';
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import  { useState, useEffect } from "react";
+
 
 interface Signature {
   id: number;
@@ -12,30 +15,25 @@ interface SignatureHistoryProps {
 }
 
 const SignatureHistory: React.FC<SignatureHistoryProps> = ({ userId }) => {
-  const [signatures, setSignatures] = useState<Signature[]>([
-    {
-      id: 1,
-      documentName: "Contrat de location",
-      date: "25/01/2024",
-      status: "Signé",
-    },
-    {
-      id: 2,
-      documentName: "Accord de confidentialité",
-      date: "20/01/2024",
-      status: "En attente",
-    },
-  ]);
+  const [signatures, setSignatures] = useState<Signature[]>([]);
 
   useEffect(() => {
     const fetchSignatures = async () => {
-      try {
-        const response = await fetch(`/api/signatures?userId=${userId}`);
-        const data = await response.json();
-        setSignatures(data);
-      } catch (error) {
-        console.error("Une erreur s'est produite lors de la récupération des signatures", error);
-      }
+      const firebaseConfig = {
+        //  configuration Firebase
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const signaturesSnapshot = await getDocs(collection(db, `signatures/${userId}`));
+      const signatures = signaturesSnapshot.docs.map((doc) => ({
+        id: Number(doc.id),
+        documentName: doc.data().documentName,
+        date: doc.data().date,
+        status: doc.data().status,
+      }));
+      setSignatures(signatures);
     };
 
     fetchSignatures();
