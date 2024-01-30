@@ -13,8 +13,10 @@
   "dependencies": {
     "annotpdf": "^1.0.15",
     "dayjs": "^1.11.10",
+    "firebase": "^10.7.2",
     "pdf-lib": "^1.17.1",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.0",
     "react-dom": "^18.2.0",
     "react-draggable": "^4.4.6",
     "react-dropzone": "^14.2.3",

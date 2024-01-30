@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/prop-types
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import  { useState, useEffect } from "react";
@@ -14,7 +15,6 @@ interface SignatureHistoryProps {
   userId: number;
 }
 
-// eslint-disable-next-line react/prop-types
 const SignatureHistory: React.FC<SignatureHistoryProps> = ({ userId }) => {
   const [signatures, setSignatures] = useState<Signature[]>([]);
 
