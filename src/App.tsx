@@ -1,14 +1,14 @@
-import './App.css'
-import Navx from './components/Navx'
-import './style/bootstrap.css'
+import './App.css';
+import NavBar from './components/Navx';
+import './styles/nav.css';
 
 function App() {
 
 
   return (
     <>
-    <Navx/>
-     Hello world
+    <NavBar/>
+     
     </>
   )
 }

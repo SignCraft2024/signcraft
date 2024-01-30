@@ -1,59 +1,77 @@
-import React, { useState } from 'react';
-import '../style/style.css';
-import SignCraft from '../assets/SignCraft.png';
+import { useState } from 'react';
+import {
+  Navbar,
+  Nav,
+  NavItem,
+  NavLink,
+  Image,
+  Dropdown,
+  DropdownButton,
+  Button,
+} from 'react-bootstrap';
+import '../styles/nav.css';
+import logo from '../assets/logo.png';
 
-const Navx: React.FC = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false);
+interface User {
+  photoUrl: string;
+  fullName: string;
+  email: string;
+}
 
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen);
+const NavBar: React.FC = () => {
+  const [user, setUser] = useState<User | null>(null);
+
+  const handleLogout = () => {
+    const confirmLogout = window.confirm('Are you sure you want to disconnect?');
+    if (confirmLogout) {
+      setUser(null);
+    }
   };
 
   return (
-    <nav
-      className="navbar navbar-expand-md navbar-dark bg-sign"
-      style={{ padding: '20px' }}
-    >
-      <a className="navbar-brand" href="/">
-        <img className="singCraft" src={SignCraft} alt="" />
-      </a>
-      <button className="navbar-toggler" type="button" onClick={toggleNav}>
-        <span className="navbar-toggler-icon"></span>
-      </button>
-        <h1 className='text-sign'>SIGN CRAFT</h1>
-      <div
-        className={`collapse navbar-collapse ${isNavOpen ? 'show' : ''} justify-content-end`}
-      >
-        {/*
-        <div className="form-inline ml-auto">
-          <input
-            className="form-control mr-sm-2"
-            type="text"
-            placeholder="Recherche"
-            aria-label="Recherche"
-          />
-        </div>*/}
-        <ul className="navbar-nav text-dark marg-sign">
-          <li className="nav-item">
-            <a className="nav-link text-dark" href="/">
-              Accueil
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link text-dark" href="/about">
-              À propos
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link text-dark" href="/contact">
-              Contact
-            </a>
-          </li>
-          <input type="button" className="btn bg-danger" value="logout" />
-        </ul>
-      </div>
-    </nav>
+    <Navbar bg="light" expand="lg">
+      <Navbar.Brand className="d-flex align-items-center">
+        <Image src={logo} alt="Logo" />
+        <span className="brand-text">SIGN CRAFT</span>
+        {user || (
+          <Button
+            variant="link"
+            onClick={handleLogout}
+            className="logout-button"
+          >
+            Log out
+          </Button>
+        )}
+      </Navbar.Brand>
+
+      <Navbar.Collapse id="basic-navbar-nav" role="navigation">
+        <Nav className="mr-auto">
+        </Nav>
+        {user && (
+          <Nav className="ml-auto">
+            <NavItem>
+              <DropdownButton
+                as={NavLink}
+                title={
+                  <Image
+                    src={user.photoUrl}
+                    roundedCircle
+                    className="mr-2"
+                    alt={user.fullName}
+                  />
+                }
+              >
+                <Dropdown.Item>{user.fullName}</Dropdown.Item>
+                <Dropdown.Item>{user.email}</Dropdown.Item>
+                <Dropdown.Divider />
+                <Dropdown.Item onClick={handleLogout}>Log out</Dropdown.Item>
+              </DropdownButton>
+            </NavItem>
+          </Nav>
+        )}
+      </Navbar.Collapse>
+    </Navbar>
   );
 };
 
-export default Navx;
+export default NavBar;
