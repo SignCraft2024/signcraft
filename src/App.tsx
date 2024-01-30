@@ -3,7 +3,7 @@ import viteLogo from '/vite.svg'*/
 import './App.css'
 import './components/ProfilePage'
 import './styles/profile.css';
-import ProfilePage from './components/ProfilePage'
+
 
 
 function App() {
@@ -12,7 +12,6 @@ function App() {
 
   return (
     <>
-     <ProfilePage/>
     </>
   )
 }
