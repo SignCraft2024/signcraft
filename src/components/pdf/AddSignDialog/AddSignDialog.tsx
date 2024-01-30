@@ -74,6 +74,7 @@ export const AddSignDialog: React.FC<AddSignDialogProps> = ({
 				<ConfirmOrCancel
 					onCancel={onClose}
 					onConfirm={() => {
+						// TODO: a verifier
 						const signURL = signRef.current.toDataURL();
 						onConfirm(signURL);
 					}}
