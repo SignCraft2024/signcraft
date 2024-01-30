@@ -27,7 +27,7 @@ function Log() {
                         </button>
                     </div>
                     <div>
-                        <p>You don't have account ? please ,<button className="signin-button" onClick={() => navigate("/signin")}> Sign in !</button></p>
+                        <p>You dont have account ? please ,<button className="signin-button" onClick={() => navigate("/signin")}> Sign in !</button></p>
                     </div>
                 </div>    
            </div>
