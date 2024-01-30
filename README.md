@@ -1,19 +1,29 @@
-# signcraft
+# Signcraft 💫
+## Getting Started 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Follow these steps to get started with SignCraft:
 
-Install all deps
-
-```bash
-npm install
-```
-
-Run
+ - Clone the Repository:
 
 ```bash
-npm run dev
+  git clone git@github.com:SignCraft2024/signcraft.git
 ```
 
-## Link
+- Install deps
 
-[application link](https://signcraft-9q5k.vercel.app/) 
+```bash
+  cd signcraft
+  npm install
+```
+- Run 
+
+```bash
+  npm run dev
+```
+
+
+## App link 🟢
+
+[link of the application](https://prog5-sign.preprod.hei.school/)
+
+    
