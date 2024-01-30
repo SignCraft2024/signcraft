@@ -1,14 +1,13 @@
-/*import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'*/
 import './App.css'
+import Footx from './components/Footx'
 
 function App() {
-  /*const [count, setCount] = useState(0)*/
 
 
   return (
     <>
      Hello world
+     <Footx/>
     </>
   )
 }
