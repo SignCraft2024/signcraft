@@ -1,6 +1,7 @@
 import React from 'react';
 import Draggable from 'react-draggable';
 import { FaCheck, FaTimes } from 'react-icons/fa';
+import './DraggableSignature.css'
 
 type DraggableSignatureProps = {
 	url: string;
