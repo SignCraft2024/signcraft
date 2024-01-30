@@ -82,7 +82,7 @@ export const Button: React.FC<ButtonProps> = ({
 		<div
 			id={id}
 			ref={hoverRef}
-			style={{ ...styles.container, ...style }}
+			// style={{ ...styles.container, ...style }}
 			onClick={() => {
 				if (!disabled) {
 					onClick();

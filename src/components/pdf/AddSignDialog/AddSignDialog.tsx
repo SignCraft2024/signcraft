@@ -59,7 +59,8 @@ export const AddSignDialog: React.FC<AddSignDialogProps> = ({
 					</div>
 				</div>
 				<div style={styles.instructionsContainer}>
-					<div style={styles.instructions}>
+					{/* <div style={styles.instructions}> */}
+					<div>
 						<div>
 							Auto date/time{' '}
 							<input

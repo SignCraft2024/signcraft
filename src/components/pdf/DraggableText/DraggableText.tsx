@@ -18,7 +18,7 @@ export const DraggableText: React.FC<DraggableTextProps> = ({
 	initialText,
 }) => {
 	const [text, setText] = useState<string>('Text');
-	const inputRef = useRef(null);
+	const inputRef = useRef();
 
 	useEffect(() => {
 		if (initialText) {
