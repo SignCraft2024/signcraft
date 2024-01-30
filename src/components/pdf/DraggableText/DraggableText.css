@@ -1,0 +1,23 @@
+.draggable-text-container {
+	position: absolute;
+	z-index: 100000;
+	border: 2px solid hsl(218, 49%, 66%);
+}
+.draggable-text-controls {
+	position: absolute;
+	right: 0;
+	display: inline-block;
+	background-color: hsl(218, 49%, 66%);
+}
+.small-button {
+	display: inline-block;
+	cursor: pointer;
+	padding: 4;
+}
+.input {
+	border: 0;
+	font-size: 20;
+	padding: 3;
+	background-color: rgba(0, 0, 0, 0);
+	cursor: move;
+}
