@@ -9,7 +9,8 @@ import { AddSignDialog } from './AddSignDialog/AddSignDialog';
 import { Button } from './Button/Button';
 import { DraggableText } from './DraggableText/DraggableText';
 import dayjs from 'dayjs';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, rgb } from 'pdf-lib';
+import { DraggableSignature } from './DraggableSignature/DraggableSignature';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -154,6 +155,71 @@ const Pdf = () => {
 										setPdf(URL);
 										setPosition(null);
 										setTextInputVisible(false);
+									}}
+								/>
+							) : null}
+							{signatureURL ? (
+								<DraggableSignature
+									url={signatureURL}
+									onCancel={() => setSignatureURL(null)}
+									onEnd={setPosition}
+									onSet={async () => {
+										const { originalHeight, originalWidth } = pageDetails;
+										const scale =
+											originalWidth / documentRef.current.clientWidth;
+
+										const y =
+											documentRef.current.clientHeight -
+											(position.y -
+												position.offsetY +
+												64 -
+												documentRef.current.offsetTop);
+										const x =
+											position.x -
+											160 -
+											position.offsetX -
+											documentRef.current.offsetLeft;
+
+										// new XY in relation to actual document size
+										const newY =
+											(y * originalHeight) / documentRef.current.clientHeight;
+										const newX =
+											(x * originalWidth) / documentRef.current.clientWidth;
+
+										const pdfDoc = await PDFDocument.load(pdf);
+
+										const pages = pdfDoc.getPages();
+										const firstPage = pages[pageNum];
+
+										const pngImage = await pdfDoc.embedPng(signatureURL);
+										const pngDims = pngImage.scale(scale * 0.3);
+
+										firstPage.drawImage(pngImage, {
+											x: newX,
+											y: newY,
+											width: pngDims.width,
+											height: pngDims.height,
+										});
+
+										if (autoDate) {
+											firstPage.drawText(
+												`Signed ${dayjs().format('M/d/YYYY HH:mm:ss ZZ')}`,
+												{
+													x: newX,
+													y: newY - 10,
+													size: 14 * scale,
+													color: rgb(0.074, 0.545, 0.262),
+												},
+											);
+										}
+
+										const pdfBytes = await pdfDoc.save();
+										const blob = new Blob([new Uint8Array(pdfBytes)]);
+
+										const URL = await blobToURL(blob);
+										setPdf(URL);
+										setPosition(null);
+										setSignatureURL(null);
 									}}
 								/>
 							) : null}
