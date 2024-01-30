@@ -1,0 +1,16 @@
+.dragable-signature-container {
+	position: absolute;
+	z-index: 100000;
+	border: 2px solid hsl(218, 49%, 66%);
+}
+.dragable-signature-controls {
+	position: absolute;
+	right: 0;
+	display: inline-block;
+	background-color: hsl(218, 49%, 66%);
+}
+.small-button {
+	display: inline-block;
+	cursor: pointer;
+	padding: 4;
+}
