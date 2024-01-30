@@ -18,14 +18,14 @@ export const DraggableText: React.FC<DraggableTextProps> = ({
 	initialText,
 }) => {
 	const [text, setText] = useState<string>('Text');
-	const inputRef = useRef();
+	const inputRef = useRef(null);
 
 	useEffect(() => {
 		if (initialText) {
 			setText(initialText);
 		} else {
-			inputRef.current.focus();
-			inputRef.current.select();
+			inputRef.current!.focus();
+			inputRef.current!.select();
 		}
 	}, []);
 
