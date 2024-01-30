@@ -1,4 +1,4 @@
-import './DraggableText.css'
+import './DraggableText.css';
 import React, { useEffect, useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import { FaCheck, FaTimes } from 'react-icons/fa';
