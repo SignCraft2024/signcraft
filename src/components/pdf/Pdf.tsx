@@ -7,6 +7,9 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import { PagingControl } from './PagingControl/PagingControl';
 import { AddSignDialog } from './AddSignDialog/AddSignDialog';
 import { Button } from './Button/Button';
+import { DraggableText } from './DraggableText/DraggableText';
+import dayjs from 'dayjs';
+import { PDFDocument } from 'pdf-lib';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -22,7 +25,7 @@ const downloadURI = (uri: string | ArrayBuffer, name: string) => {
 const Pdf = () => {
 	const [pdf, setPdf] = useState<null | string | ArrayBuffer>(null);
 	const [totalPages, setTotalPages] = useState<number>(0);
-	const [pageDetails, setPageDetails] = useState(null);
+	const [pageDetails, setPageDetails] = useState<any>(null);
 	const [pageNum, setPageNum] = useState<number>(0);
 	const documentRef = useRef(null);
 	const [signatureDialogVisible, setSignatureDialogVisible] =
@@ -32,6 +35,7 @@ const Pdf = () => {
 	);
 	const [autoDate, setAutoDate] = useState<boolean>(true);
 	const [signatureURL, setSignatureURL] = useState<string | null>(null);
+	const [position, setPosition] = useState<any>(null);
 
 	const onLoadedDrop = async (files: Blob[]) => {
 		const URL: string | null = await blobToURL(files[0]);
@@ -100,6 +104,59 @@ const Pdf = () => {
 							) : null}
 						</div>
 						<div ref={documentRef} className="pdf-document-block">
+							{textInputVisible ? (
+								<DraggableText
+									initialText={
+										textInputVisible === 'date'
+											? dayjs().format('M/d/YYYY')
+											: null
+									}
+									onCancel={() => setTextInputVisible(false)}
+									onEnd={setPosition}
+									onSet={async (text) => {
+										const { originalHeight, originalWidth } = pageDetails;
+										const scale =
+											originalWidth / documentRef.current.clientWidth;
+
+										const y =
+											documentRef.current.clientHeight -
+											(position.y +
+												12 * scale -
+												position.offsetY -
+												documentRef.current.offsetTop);
+										const x =
+											position.x -
+											166 -
+											position.offsetX -
+											documentRef.current.offsetLeft;
+
+										// new XY in relation to actual document size
+										const newY =
+											(y * originalHeight) / documentRef.current.clientHeight;
+										const newX =
+											(x * originalWidth) / documentRef.current.clientWidth;
+
+										const pdfDoc = await PDFDocument.load(pdf);
+
+										const pages = pdfDoc.getPages();
+										const firstPage = pages[pageNum];
+
+										firstPage.drawText(text, {
+											x: newX,
+											y: newY,
+											size: 20 * scale,
+										});
+
+										const pdfBytes = await pdfDoc.save();
+										const blob = new Blob([new Uint8Array(pdfBytes)]);
+
+										const URL = await blobToURL(blob);
+										setPdf(URL);
+										setPosition(null);
+										setTextInputVisible(false);
+									}}
+								/>
+							) : null}
 							<Document
 								file={pdf}
 								onLoadSuccess={(document: any) => {
