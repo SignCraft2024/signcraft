@@ -13,8 +13,8 @@ function App() {
 
   return (
     <>
-    <NavBar>
-    <ProfilePage/>
+      <NavBar>
+      <ProfilePage/>
       <ShowFile/>
     </>
   );
