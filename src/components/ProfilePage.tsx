@@ -3,7 +3,6 @@ import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { useState, useEffect } from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import UserProfileInfo from "./UserProfileInfo";
-import SignatureHistory from "./SignatureHistory";
 import "../styles/profile.css";
 
 const ProfilePage: React.FC = () => {
@@ -14,12 +13,12 @@ const ProfilePage: React.FC = () => {
     profilePicture: "",
   });
 
-  const [userId, setUserId] = useState(null);
+  const [userId] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       const firebaseConfig = {
-        //  configuration Firebase
+        
       };
 
       const app = initializeApp(firebaseConfig);
@@ -42,13 +41,6 @@ const ProfilePage: React.FC = () => {
           <div className="user-info">
             <UserProfileInfo label="Nom complet" value={user.name} />
             <UserProfileInfo label="E-mail" value={user.email} />
-          </div>
-        </Col>
-      </Row>
-      <Row>
-        <Col md={12}>
-          <div className="signature-history">
-          <SignatureHistory userId={userId ?? 0} />
           </div>
         </Col>
       </Row>

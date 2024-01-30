@@ -5,7 +5,7 @@ import './App.css'
 import Footx from './components/Footx'
 import './components/ProfilePage'
 import './styles/profile.css';
-import ProfilePage from './components/ProfilePage'
+
 
 
 function App() {
@@ -13,11 +13,10 @@ function App() {
 
   return (
     <>
-    <NavBar/>
-     
-     Hello world
-     <Footx/>
-     <ProfilePage/>
+      
+    <NavBar>
+    <ProfilePage/>
+
     </>
   )
 }
