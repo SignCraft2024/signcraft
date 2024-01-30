@@ -3,6 +3,10 @@ import NavBar from './components/Navx';
 import './styles/nav.css';
 import './App.css'
 import Footx from './components/Footx'
+import './components/ProfilePage'
+import './styles/profile.css';
+import ProfilePage from './components/ProfilePage'
+
 
 function App() {
 
@@ -13,6 +17,7 @@ function App() {
      
      Hello world
      <Footx/>
+     <ProfilePage/>
     </>
   )
 }
