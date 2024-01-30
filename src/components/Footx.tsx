@@ -5,7 +5,7 @@ const Footx: React.FC = () => {
     <footer className="bg-dark text-light text-center py-3">
       <p>
         &copy; 2024{' '}
-        <a href="https://www.facebook.com/bryan.lakara">Bryan Lakara</a>. Tous
+        <h4>SIGN CRAFT</h4>. Tous
         droits réservés.
       </p>
     </footer>
