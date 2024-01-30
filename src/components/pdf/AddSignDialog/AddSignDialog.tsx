@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import ReactSignatureCanvas from 'react-signature-canvas';
 import { Dialog } from '../Dialog/Dialog';
 import './AddSignDialog.css';

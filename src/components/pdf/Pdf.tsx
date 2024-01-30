@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import './Pdf.css';
 import { useRef, useState } from 'react';
 import Header from './header/Header';

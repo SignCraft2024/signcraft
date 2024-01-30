@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import './DraggableText.css';
 import React, { useEffect, useRef, useState } from 'react';
 import Draggable from 'react-draggable';

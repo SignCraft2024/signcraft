@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import Draggable from 'react-draggable';
 import { FaCheck, FaTimes } from 'react-icons/fa';

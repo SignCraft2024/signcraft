@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import './ConfirmOrCancel.css';
 import React from 'react';
 import { Button } from '../Button/Button';

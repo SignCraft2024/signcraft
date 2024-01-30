@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from '../Button/Button';
 import './PagingControl.css';
 import React from 'react';
