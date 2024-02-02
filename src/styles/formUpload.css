@@ -1,25 +1,25 @@
 .file-upload-label {
-  cursor: pointer;
-  padding: 15px;
-  background-color: #e4dcd1;
-  color: black;
-  border-radius: 25px;
-  font-weight: bold;
+	cursor: pointer;
+	padding: 15px;
+	background-color: #e4dcd1;
+	color: black;
+	border-radius: 25px;
+	font-weight: bold;
 }
 
 .file-upload-label:hover {
-  font-size: large;
+	font-size: large;
 }
 
 .file-upload-input {
-  top: 0;
-  left: 0;
-  opacity: 0;
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	cursor: pointer;
+	width: 100%;
+	height: 100%;
 }
 
 .file-name {
-  margin: 2em;
+	margin: 2em;
 }

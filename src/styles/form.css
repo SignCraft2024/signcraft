@@ -1,85 +1,85 @@
 .form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  margin: 100px 0 0 30vmax;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100vh;
+	margin: 100px 0 0 30vmax;
 }
 
 .form-container > h1 {
-  text-align: center;
+	text-align: center;
 }
 
 .txt {
-  text-align: center;
+	text-align: center;
 }
 
 .form {
-  display: flex;
-  flex-direction: row;
+	display: flex;
+	flex-direction: row;
 }
 
 .logo {
-  width: 350px;
-  height: auto;
+	width: 350px;
+	height: auto;
 }
 
 .form-input {
-  width: 300px;
-  height: 40px;
-  margin-top: 20px;
+	width: 300px;
+	height: 40px;
+	margin-top: 20px;
 }
 
 .form-input-button {
-  width: 310px;
-  height: 40px;
-  margin-top: 20px;
-  background-color: #e4dcd1;
-  border: 0px;
-  border-radius: 10px;
-  font-size: large;
-  font-weight: bold;
+	width: 310px;
+	height: 40px;
+	margin-top: 20px;
+	background-color: #e4dcd1;
+	border: 0px;
+	border-radius: 10px;
+	font-size: large;
+	font-weight: bold;
 }
 
 .input-container {
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
+	display: flex;
+	flex-direction: column;
+	margin-left: 20px;
 }
 
 .signin-button {
-  border: 0px;
-  font-size: large;
-  font-weight: bolder;
-  color: #c4b098;
-  background-color: #ffff;
+	border: 0px;
+	font-size: large;
+	font-weight: bolder;
+	color: #c4b098;
+	background-color: #ffff;
 }
 
 .google {
-  width: 200px;
-  height: 40px;
-  margin-left: 70px;
+	width: 200px;
+	height: 40px;
+	margin-left: 70px;
 }
 
 .input {
-  display: flex;
-  flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
 .logo-signin {
-  width: 300px;
-  height: auto;
+	width: 300px;
+	height: auto;
 }
 
 .google > img {
-  width: 20px;
-  height: auto;
+	width: 20px;
+	height: auto;
 }
 
 .form-input-button:hover {
-  background-color: #c4b098;
+	background-color: #c4b098;
 }
 
 .google:hover {
-  border: 2px solid #c4b098;
+	border: 2px solid #c4b098;
 }
