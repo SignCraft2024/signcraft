@@ -20,9 +20,9 @@ function App() {
         <Routes>
           <Route path="/login" element={<Log/>} />
           <Route path="/signin" element={<Signin/>}/>
-          <Route path="/home" element={ <HomePage />}/>
-          <Route path="/upload" element={  <ShowFile/>}/>
-          <Route path="/upload" element={    <ProfilePage />}/>
+          <Route path="/home" element={<HomePage />}/>
+          <Route path="/upload" element={<ShowFile/>}/>
+          <Route path="/upload" element={<ProfilePage />}/>
         </Routes>
       </BrowserRouter>
     </>
