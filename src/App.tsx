@@ -9,6 +9,9 @@ import Signin from './components/Signin/Sign';
 import HomePage from './components/Homepage/HomePage';
 import ProfilePage from './components/Profile/ProfilePage';
 
+import './App.css';
+import Pdf from './components/pdf/Pdf';
+
 function App() {
   return (
     <>
@@ -21,6 +24,7 @@ function App() {
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </BrowserRouter>
+      <Pdf />
     </>
   );
 }

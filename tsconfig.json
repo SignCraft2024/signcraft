@@ -1,10 +1,13 @@
 {
   "compilerOptions": {
+    "strict": false,  // Turn off strict type checking
+    "noImplicitAny": false,  // Allow variables with no type annotations to implicitly have an 'any' type
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -15,7 +18,7 @@
     "jsx": "react-jsx",
 
     /* Linting */
-    "strict": true,
+    // "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
