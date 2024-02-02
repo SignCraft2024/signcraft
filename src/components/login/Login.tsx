@@ -1,7 +1,7 @@
 import "../../styles/form.css"
 import logo from '../../assets/logo.png'
 import google from '../../assets/google.svg'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from  "react-router-dom";
 
 function Log() {
     const navigate = useNavigate();

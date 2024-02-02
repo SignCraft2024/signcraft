@@ -4,6 +4,7 @@ import google from '../../assets/google.svg'
 import '../../styles/form.css'
 
 function Signin() {
+    
     const navigate = useNavigate();
 
     return (
