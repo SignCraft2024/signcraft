@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "react-bootstrap";
-import SignatureHistory from "./SignatureHistory";
-import "../../styles/Home.css";
 
-const Home = () => {
+import "../../styles/Home.css";
+import SignatureHistory from "./SignatureHistory";
+
+const HomePage = () => {
  const [signature] = useState("");
 
  const handleSubmit = (event: { preventDefault: () => void; }) => {
@@ -15,9 +16,9 @@ const Home = () => {
    <div>
      <h1>SignCraft for your online signature</h1> {}
      <Button onClick={handleSubmit}>Add signature</Button>
-     <SignatureHistory/>
+     <SignatureHistory userId={0}/>
    </div>
  );
 };
 
-export default Home;
+export default HomePage;

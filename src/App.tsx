@@ -1,17 +1,11 @@
-/*import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'*/
-import './App.css'
-import Home from './components/HomePage/HomePage'
+import './App.css';
+import HomePage from './components/Homepage/HomePage';
 function App() {
-  /*const [count, setCount] = useState(0)*/
-
-
   return (
     <>
-     Hello world
-     <Home/>
+      <HomePage />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
