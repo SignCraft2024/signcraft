@@ -1,7 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
-import  { useState, useEffect } from "react";
-import "../../styles/SignatureHistory.css";
+import { useState, useEffect } from 'react';
+import '../../styles/SignatureHistory.css';
 
 interface Signature {
   id: number;
@@ -27,7 +27,9 @@ const SignatureHistory: React.FC<SignatureHistoryProps> = ({ userId }) => {
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
 
-      const signaturesSnapshot = await getDocs(collection(db, `signatures/${userId}`));
+      const signaturesSnapshot = await getDocs(
+        collection(db, `signatures/${userId}`),
+      );
       const signatures = signaturesSnapshot.docs.map((doc) => ({
         id: Number(doc.id),
         documentName: doc.data().documentName,

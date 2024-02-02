@@ -1,25 +1,22 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
-import { useState, useEffect } from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import UserProfileInfo from "./UserProfileInfo";
-import "../styles/profile.css";
+import { useState, useEffect } from 'react';
+import { Row, Col, Container } from 'react-bootstrap';
+import UserProfileInfo from './UserProfileInfo';
 
 const ProfilePage: React.FC = () => {
   const [user, setUser] = useState({
-    id: null, 
-    name: "",
-    email: "",
-    profilePicture: "",
+    id: null,
+    name: '',
+    email: '',
+    profilePicture: '',
   });
 
   const [userId] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
-      const firebaseConfig = {
-        
-      };
+      const firebaseConfig = {};
 
       const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
