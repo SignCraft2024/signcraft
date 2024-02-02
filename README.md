@@ -23,6 +23,12 @@ Follow these steps to get started with SignCraft:
   npm run dev
 ```
 
+- Build
+
+```bash
+  npm run build
+```
+
 ## Formatter
 
 Prettier
