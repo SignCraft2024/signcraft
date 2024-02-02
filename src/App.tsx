@@ -1,6 +1,6 @@
 import './App.css';
 import './styles/nav.css'
-import ShowFile from './component/file_upload/ShowFile';
+import ShowFile from './components/file_upload/ShowFile';
 import './styles/profile.css';
 
 
