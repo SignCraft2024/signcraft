@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import FormUpload from './FormUpload';
 
-const ShowFile = () => {
+export const ShowFile = () => {
 	const [uploadedFile, setUploadedFile] = useState<File | null>(null);
 
 	const handleFileUpload = (file: File) => {
@@ -29,4 +29,4 @@ const ShowFile = () => {
 	);
 };
 
-export default ShowFile;
+

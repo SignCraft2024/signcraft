@@ -1,13 +1,10 @@
-import './App.css';
-import './styles/nav.css';
-import './styles/nav.css';
-import ShowFile from './components/Fileupload/ShowFile';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Login from './components/Login/Login';
-import Signin from './components/Signin/Sign';
-import HomePage from './components/Homepage/HomePage';
-import ProfilePage from './components/Profile/ProfilePage';
-import Pdf from './components/pdf/Pdf';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./components/Homepage/HomePage";
+import Login from "./components/login/Login";
+import Pdf from "./components/pdf/Pdf";
+import ProfilePage from "./components/profile/ProfilePage";
+import Signin from "./components/signin/Sign";
+import { ShowFile } from "./components/FileUpload/ShowFile";
 
 function App() {
 	return (
