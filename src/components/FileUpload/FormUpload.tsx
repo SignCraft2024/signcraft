@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import '../../styles/formUpload.css';
+import PropTypes from 'prop-types';
 
 interface FileUploaderProps {
 	onFileUpload: (file: File) => void;
@@ -38,6 +39,10 @@ const FormUpload: React.FC<FileUploaderProps> = ({ onFileUpload }) => {
 			)}
 		</div>
 	);
+};
+
+FormUpload.propTypes = {
+	onFileUpload: PropTypes.func.isRequired,
 };
 
 export default FormUpload;

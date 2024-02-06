@@ -1,8 +1,8 @@
-// eslint-disable-next-line react/prop-types
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import '../../styles/SignatureHistory.css';
+import PropTypes from 'prop-types';
 
 interface Signature {
 	id: number;
@@ -65,6 +65,10 @@ const SignatureHistory: React.FC<SignatureHistoryProps> = ({ userId }) => {
 			</table>
 		</div>
 	);
+};
+
+SignatureHistory.propTypes = {
+	userId: PropTypes.number.isRequired,
 };
 
 export default SignatureHistory;
