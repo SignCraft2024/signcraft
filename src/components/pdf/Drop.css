@@ -1,13 +1,33 @@
 .drop-container {
 	text-align: center;
-	border: 1px solid rgb(208, 227, 239);
-	padding: 20;
-	margin-top: 12;
-	color: hsl(218, 49%, 66%);
-	font-size: 18;
-	font-weight: 600;
-	border-radius: 4;
-	user-select: none;
-	outline: 0;
+	border: 2px dashed #ccc;
+	padding: 20px;
+	margin: 20px auto;
+	color: #1f1a1a;
+	font-size: 18px;
+	font-weight: bold;
+	border-radius: 8px;
+	width: 300px;
+	transition: background-color 0.3s;
+}
+
+.drop-container p {
+	margin-top: 10px;
+}
+
+.drop-container:hover{
 	cursor: pointer;
+	animation: pulse 1s infinite alternate;
+}
+.drop-container:focus {
+	outline: none ;
+}
+
+@keyframes pulse {
+	0%{
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(1.05);
+	}
 }
