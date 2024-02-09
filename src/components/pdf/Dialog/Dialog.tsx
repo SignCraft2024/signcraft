@@ -40,11 +40,7 @@ export const Dialog: React.FC<DialogProps> = ({
 	};
 
 	return (
-		<Modal
-			onClose={onClose}
-			isVisible={isVisible}
-			positionTop={positionTop}
-		>
+		<Modal onClose={onClose} isVisible={isVisible} positionTop={positionTop}>
 			<div>
 				<div style={styles.header}>
 					<div>{title}</div>

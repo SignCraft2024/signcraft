@@ -24,11 +24,7 @@ export const ConfirmOrCancel: React.FC<{
 			<div>{leftBlock}</div>
 			<div>
 				{!hideCancel && (
-					<Button
-						title="Cancel"
-						onClick={onCancel}
-						marginRight={8}
-					/>
+					<Button title="Cancel" onClick={onCancel} marginRight={8} />
 				)}
 				<Button
 					title={confirmTitle}

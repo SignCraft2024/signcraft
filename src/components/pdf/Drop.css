@@ -15,16 +15,16 @@
 	margin-top: 10px;
 }
 
-.drop-container:hover{
+.drop-container:hover {
 	cursor: pointer;
 	animation: pulse 1s infinite alternate;
 }
 .drop-container:focus {
-	outline: none ;
+	outline: none;
 }
 
 @keyframes pulse {
-	0%{
+	0% {
 		transform: scale(1);
 	}
 	100% {
