@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Navbar, Nav, Image, Button, Modal } from 'react-bootstrap';
+import { BrowserRouter, Link } from 'react-router-dom'; 
 import '../../styles/nav.css';
 import logo from '../../assets/logo.png';
-import {auth} from '../../firebase-config';
+import { auth } from '../../firebase-config';
 
 interface User {
 	fullName: string;
@@ -59,17 +60,24 @@ const NavBar: React.FC = () => {
 			setUser(null);
 		}
 	};
-	
 
 	return (
 		<>
+		<BrowserRouter>
 			<Navbar bg="light" expand="lg" className="d-flex justify-content-between">
 				<Navbar.Brand className="d-flex align-items-center">
-					<Image src={logo} alt="Logo" />
+					<Link to="../home"> 
+						<Image src={logo} alt="Logo" />
+					</Link>
 					<span className="brand-text mr-2">SIGN CRAFT</span>
 				</Navbar.Brand>
 
 				<Nav>
+					<Link to="../pdf"> 
+						<Button variant="link">
+							<i className="bi bi-file-pdf fs-4"></i>
+						</Button>
+					</Link>
 					<Button variant="link" onClick={handleFetchUserInfo}>
 						<i className="bi bi-person-circle fs-4"></i>
 					</Button>
@@ -80,6 +88,7 @@ const NavBar: React.FC = () => {
 			</Navbar>
 
 			<UserModal user={user} onClose={handleCloseUserModal} />
+		</BrowserRouter>
 		</>
 	);
 };
