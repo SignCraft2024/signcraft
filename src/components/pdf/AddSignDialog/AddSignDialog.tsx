@@ -19,34 +19,11 @@ export const AddSignDialog: React.FC<AddSignDialogProps> = ({
 }) => {
 	const signRef = useRef(null);
 
-	const styles = {
-		signContainer: {
-			display: 'flex',
-			justifyContent: 'center',
-		},
-		signBlock: {
-			display: 'inline-block',
-			border: '1px solid hsl(218,49%,66%)',
-		},
-		instructions: {
-			display: 'flex',
-			justifyContent: 'space-between',
-			textAlign: 'center',
-			color: 'hsl(218,49%,66%)',
-			marginTop: 8,
-			width: 600,
-			alignSelf: 'center',
-		},
-		instructionsContainer: {
-			display: 'flex',
-			justifyContent: 'center',
-		},
-	};
 	return (
 		<Dialog isVisible={true} onClose={onClose} title="Add Signature">
 			<div>
-				<div style={styles.signContainer}>
-					<div style={styles.signBlock}>
+				<div className="sign-container">
+					<div className="sign-block">
 						<ReactSignatureCanvas
 							velocityFilterWeight={1}
 							ref={signRef}
@@ -58,9 +35,8 @@ export const AddSignDialog: React.FC<AddSignDialogProps> = ({
 						/>
 					</div>
 				</div>
-				<div style={styles.instructionsContainer}>
-					{/* <div style={styles.instructions}> */}
-					<div>
+				<div className="instructions-container">
+					<div className="instructions">
 						<div>
 							Auto date/time{' '}
 							<input

@@ -1,3 +1,15 @@
 .title {
 	color: black;
 }
+
+.button-container {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 4;
+	user-select: none;
+	box-sizing: border-box;
+}
+
+.inverted-button {
+}

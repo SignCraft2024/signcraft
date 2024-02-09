@@ -10,7 +10,6 @@ type DialogProps = {
 	noPadding?: boolean;
 	backgroundColor?: string;
 	positionTop?: number;
-	style?: object;
 };
 export const Dialog: React.FC<DialogProps> = ({
 	isVisible,
@@ -20,7 +19,6 @@ export const Dialog: React.FC<DialogProps> = ({
 	noPadding,
 	backgroundColor,
 	positionTop,
-	style,
 }) => {
 	const styles = {
 		header: {
@@ -42,12 +40,7 @@ export const Dialog: React.FC<DialogProps> = ({
 	};
 
 	return (
-		<Modal
-			onClose={onClose}
-			isVisible={isVisible}
-			positionTop={positionTop}
-			style={style}
-		>
+		<Modal onClose={onClose} isVisible={isVisible} positionTop={positionTop}>
 			<div>
 				<div style={styles.header}>
 					<div>{title}</div>
