@@ -2,37 +2,9 @@ import { useState } from 'react';
 import { Navbar, Nav, Image, Button, Modal } from 'react-bootstrap';
 import '../../styles/nav.css';
 import logo from '../../assets/logo.png';
-import firebase from 'firebase/compat/app';
-import 'firebase/auth';
-
-const firebaseConfig = {
-	//configuration Firebase
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const getUserInfoFromFirebase = async (): Promise<User | null> => {
-	try {
-		const currentUser = firebase.auth().currentUser;
-		if (currentUser) {
-			const userInfo: User = {
-				photoUrl: currentUser.photoURL || '',
-				fullName: currentUser.displayName || '',
-				email: currentUser.email || '',
-			};
-			return userInfo;
-		} else {
-			console.error('No user is currently signed in');
-			return null;
-		}
-	} catch (error) {
-		console.error('Error fetching user info:', error);
-		return null;
-	}
-};
+import {auth} from '../../firebase-config';
 
 interface User {
-	photoUrl: string;
 	fullName: string;
 	email: string;
 }
@@ -60,6 +32,7 @@ const NavBar: React.FC = () => {
 			'Are you sure you want to disconnect?',
 		);
 		if (confirmLogout) {
+			auth.signOut();
 			setUser(null);
 		}
 	};
@@ -69,11 +42,24 @@ const NavBar: React.FC = () => {
 	};
 
 	const handleFetchUserInfo = async () => {
-		const userInfo = await getUserInfoFromFirebase();
-		if (userInfo) {
-			setUser(userInfo);
+		try {
+			const currentUser = auth.currentUser;
+			if (currentUser) {
+				const userInfo: User = {
+					fullName: currentUser.displayName || '',
+					email: currentUser.email || '',
+				};
+				setUser(userInfo);
+			} else {
+				console.error('No user is currently signed in');
+				setUser(null);
+			}
+		} catch (error) {
+			console.error('Error fetching user info:', error);
+			setUser(null);
 		}
 	};
+	
 
 	return (
 		<>
