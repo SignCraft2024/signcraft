@@ -27,7 +27,7 @@ export const ConfirmOrCancel: React.FC<{
 					<Button
 						title="Cancel"
 						onClick={onCancel}
-						style={{ marginRight: 8 }}
+						marginRight={8}
 					/>
 				)}
 				<Button

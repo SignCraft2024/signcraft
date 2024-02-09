@@ -11,4 +11,10 @@
 .modal-container {
 	background-color: #fff;
 	border: 1px solid hsl(218, 49%, 66%);
+	left: 50%;
+	transform: translateX(-50%);
+	width: 94%;
+	z-index: 10000;
+	box-shadow: 0 0px 14px hsla(0, 0%, 0%, 0.2);
+	border-radius: 4;
 }
