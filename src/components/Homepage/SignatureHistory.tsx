@@ -1,74 +1,80 @@
-import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
-import { useState, useEffect } from 'react';
-import '../../styles/SignatureHistory.css';
-import PropTypes from 'prop-types';
+// import { initializeApp } from 'firebase/app';
+// import { getFirestore, collection, getDocs } from 'firebase/firestore';
+// import { useState, useEffect } from 'react';
+// import '../../styles/SignatureHistory.css';
+// import PropTypes from 'prop-types';
 
-interface Signature {
-	id: number;
-	documentName: string;
-	date: string;
-	status: string;
-}
+// interface Signature {
+// 	id: number;
+// 	documentName: string;
+// 	date: string;
+// 	status: string;
+// }
 
-interface SignatureHistoryProps {
-	userId: number;
-}
+// interface SignatureHistoryProps {
+// 	userId: number;
+// }
 
-const SignatureHistory: React.FC<SignatureHistoryProps> = ({ userId }) => {
-	const [signatures, setSignatures] = useState<Signature[]>([]);
+// const SignatureHistory: React.FC<SignatureHistoryProps> = ({ userId }) => {
+// 	const [signatures, setSignatures] = useState<Signature[]>([]);
 
-	useEffect(() => {
-		const fetchSignatures = async () => {
-			const firebaseConfig = {
-				//  configuration Firebase
-			};
+// 	useEffect(() => {
+// 		const fetchSignatures = async () => {
+// 			const firebaseConfig = {
+// 				//  configuration Firebase
+// 			};
 
-			const app = initializeApp(firebaseConfig);
-			const db = getFirestore(app);
+// 			const app = initializeApp(firebaseConfig);
+// 			const db = getFirestore(app);
 
-			const signaturesSnapshot = await getDocs(
-				collection(db, `signatures/${userId}`),
-			);
-			const signatures = signaturesSnapshot.docs.map((doc) => ({
-				id: Number(doc.id),
-				documentName: doc.data().documentName,
-				date: doc.data().date,
-				status: doc.data().status,
-			}));
-			setSignatures(signatures);
-		};
+// 			const signaturesSnapshot = await getDocs(
+// 				collection(db, `signatures/${userId}`),
+// 			);
+// 			const signatures = signaturesSnapshot.docs.map((doc) => ({
+// 				id: Number(doc.id),
+// 				documentName: doc.data().documentName,
+// 				date: doc.data().date,
+// 				status: doc.data().status,
+// 			}));
+// 			setSignatures(signatures);
+// 		};
 
-		fetchSignatures();
-	}, [userId]);
+// 		fetchSignatures();
+// 	}, [userId]);
 
-	return (
-		<div>
-			<h2>Historique des signatures</h2>
-			<table>
-				<thead>
-					<tr>
-						<th>Document</th>
-						<th>Date</th>
-						<th>Statut</th>
-					</tr>
-				</thead>
-				<tbody>
-					{signatures.map((signature) => (
-						<tr key={signature.id}>
-							<td>{signature.documentName}</td>
-							<td>{signature.date}</td>
-							<td>{signature.status}</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
-		</div>
-	);
-};
+// 	return (
+// 		<div>
+// 			<h2>Historique des signatures</h2>
+// 			<table>
+// 				<thead>
+// 					<tr>
+// 						<th>Document</th>
+// 						<th>Date</th>
+// 						<th>Statut</th>
+// 					</tr>
+// 				</thead>
+// 				<tbody>
+// 					{signatures.map((signature) => (
+// 						<tr key={signature.id}>
+// 							<td>{signature.documentName}</td>
+// 							<td>{signature.date}</td>
+// 							<td>{signature.status}</td>
+// 						</tr>
+// 					))}
+// 				</tbody>
+// 			</table>
+// 		</div>
+// 	);
+// };
 
-SignatureHistory.propTypes = {
-	userId: PropTypes.number.isRequired,
+// SignatureHistory.propTypes = {
+// 	userId: PropTypes.number.isRequired,
+// };
+
+// export default SignatureHistory;
+
+const SignatureHistory = () => {
+	return <div>SignatureHistory</div>;
 };
 
 export default SignatureHistory;

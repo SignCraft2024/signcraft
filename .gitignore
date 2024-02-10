@@ -23,5 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
-public/pspdfkit-lib
+
+# ignore .env
 .env
+
+#ignore pspdfkit
+public/pspdfkit-lib
