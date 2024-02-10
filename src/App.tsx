@@ -1,7 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './components/Homepage/HomePage';
-
-import Pdf from './components/pdf/Pdf';
 import ProfilePage from './components/profile/ProfilePage';
 
 import { ShowFile } from './components/FileUpload/ShowFile';
@@ -42,7 +40,14 @@ function App() {
 							</ProtectedRoute>
 						}
 					/>
-					<Route path="/pdf" element={<ProtectedRoute><DocumentViewerComponent /></ProtectedRoute>} />
+					<Route
+						path="/pdf"
+						element={
+							<ProtectedRoute>
+								<DocumentViewerComponent />
+							</ProtectedRoute>
+						}
+					/>
 				</Routes>
 			</BrowserRouter>
 		</AuthProvider>

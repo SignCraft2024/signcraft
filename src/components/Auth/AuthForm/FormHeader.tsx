@@ -1,5 +1,5 @@
 import { Stack, Heading, Text, Link, Image } from '@chakra-ui/react';
-import Logo from '../../../assets/Logo.png';
+import Logo from '../../../assets/logo.png';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
