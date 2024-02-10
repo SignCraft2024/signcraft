@@ -7,7 +7,7 @@ function Header() {
 				<div className="header-text">
 					<h1>SIGNATURE EN LIGNE</h1>
 					<div className="subtitle">
-						Protégez l'environnement : signez sans papier.
+						Protégez l&apos;environnement : signez sans papier.
 					</div>
 				</div>
 			</div>
