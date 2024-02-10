@@ -9,6 +9,7 @@ import Login from './components/Auth/Login/Login';
 import Signin from './components/Auth/Signin/Signin';
 import AuthProvider from './components/AuthProvider';
 import ProtectedRoute from './components/ProtectedRoute';
+import DocumentViewerComponent from './components/pdf/pspdfkit/DocumentViewerComponent';
 
 function App() {
 	return (
@@ -41,14 +42,7 @@ function App() {
 							</ProtectedRoute>
 						}
 					/>
-					<Route
-						path="/pdf"
-						element={
-							<ProtectedRoute>
-								<Pdf />
-							</ProtectedRoute>
-						}
-					/>
+					<Route path="/pdf" element={<ProtectedRoute><DocumentViewerComponent /></ProtectedRoute>} />
 				</Routes>
 			</BrowserRouter>
 		</AuthProvider>
