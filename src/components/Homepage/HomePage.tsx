@@ -1,22 +1,22 @@
-import { Button } from 'react-bootstrap';
-
-import '../../styles/Home.css';
-import { useNavigate } from 'react-router-dom';
-// import SignatureHistory from './SignatureHistory';
-
-const HomePage = () => {
-	const navigate = useNavigate();
-	const handleSubmit = () => {
-		navigate('/pdf');
-	};
-
+import { Flex } from '@chakra-ui/react';
+import Hero from '../Hero';
+import Signature from '../../assets/signature.jpg';
+export default function Landing(props) {
 	return (
-		<div>
-			<h1>SignCraft for your online signature</h1> {}
-			<Button onClick={handleSubmit}>Add signature</Button>
-			{/* <SignatureHistory userId={0} /> */}
-		</div>
+		<Flex
+			direction="column"
+			align="center"
+			maxW={{ xl: '1200px' }}
+			m="0 auto"
+			{...props}
+		>
+			<Hero
+				title="A professional online signature application"
+				subtitle="Fast and simple"
+				image={Signature}
+				ctaText="Sign your first document"
+				ctaLink="/pdf"
+			/>
+		</Flex>
 	);
-};
-
-export default HomePage;
+}

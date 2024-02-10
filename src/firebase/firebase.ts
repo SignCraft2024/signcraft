@@ -3,6 +3,7 @@ import {
 	createUserWithEmailAndPassword,
 	getAuth,
 	signInWithEmailAndPassword,
+	signOut,
 } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -23,4 +24,8 @@ export const handleLogin = (email: string, password: string) => {
 
 export const handleSignIn = (email: string, password: string) => {
 	return createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const logOut = () => {
+	return signOut(auth);
 };

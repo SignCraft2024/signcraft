@@ -1,13 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './components/Homepage/HomePage';
-import ProfilePage from './components/profile/ProfilePage';
-
-import { ShowFile } from './components/FileUpload/ShowFile';
 import Login from './components/Auth/Login/Login';
 import Signin from './components/Auth/Signin/Signin';
-import AuthProvider from './components/AuthProvider';
-import ProtectedRoute from './components/ProtectedRoute';
+import AuthProvider from './security/AuthProvider';
+import ProtectedRoute from './security/ProtectedRoute';
 import DocumentViewerComponent from './components/pdf/pspdfkit/DocumentViewerComponent';
+import Header from './components/Header';
 
 function App() {
 	return (
@@ -20,23 +18,8 @@ function App() {
 						path="/home"
 						element={
 							<ProtectedRoute>
+								<Header />
 								<HomePage />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="/upload"
-						element={
-							<ProtectedRoute>
-								<ShowFile />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="/profile"
-						element={
-							<ProtectedRoute>
-								<ProfilePage />
 							</ProtectedRoute>
 						}
 					/>
@@ -44,6 +27,7 @@ function App() {
 						path="/pdf"
 						element={
 							<ProtectedRoute>
+								<Header />
 								<DocumentViewerComponent />
 							</ProtectedRoute>
 						}
