@@ -25,3 +25,7 @@ dist-ssr
 
 #pspdfkit
 public/pspdfkit-lib/
+
+#ignore env
+
+.env
