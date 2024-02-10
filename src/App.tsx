@@ -5,21 +5,21 @@ import Pdf from './components/pdf/Pdf';
 import ProfilePage from './components/profile/ProfilePage';
 import Signin from './components/signin/Sign';
 import { ShowFile } from './components/FileUpload/ShowFile';
+import DocumentViewerComponent from './components/pdf/pspdfkit/DocumentViewerComponent';
 
 function App() {
 	return (
-		<>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/login" element={<Login />} />
-					<Route path="/signin" element={<Signin />} />
-					<Route path="/home" element={<HomePage />} />
-					<Route path="/upload" element={<ShowFile />} />
-					<Route path="/profile" element={<ProfilePage />} />
-					<Route path="/pdf" element={<Pdf />} />
-				</Routes>
-			</BrowserRouter>
-		</>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/login" element={<Login />} />
+				<Route path="/signin" element={<Signin />} />
+				<Route path="/home" element={<HomePage />} />
+				<Route path="/upload" element={<ShowFile />} />
+				<Route path="/profile" element={<ProfilePage />} />
+				<Route path="/pdf" element={<Pdf />} />
+				<Route path="/pspdfkit" element={<DocumentViewerComponent />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
 
