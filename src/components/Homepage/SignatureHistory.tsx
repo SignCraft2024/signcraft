@@ -74,9 +74,7 @@
 // export default SignatureHistory;
 
 const SignatureHistory = () => {
-  return (
-	<div>SignatureHistory</div>
-  )
-}
+	return <div>SignatureHistory</div>;
+};
 
-export default SignatureHistory
+export default SignatureHistory;

@@ -1,4 +1,4 @@
-import { Stack, Button, HStack, Divider, Text } from '@chakra-ui/react';
+import { Stack, Button } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 
 interface FormButtonProps {
@@ -9,17 +9,10 @@ const FormButton: React.FC<FormButtonProps> = ({ isLogin }) => {
 	return (
 		<Stack spacing="6">
 			{isLogin ? (
-				<Button type="submit">Sign in</Button>
-			) : (
 				<Button type="submit">Login</Button>
+			) : (
+				<Button type="submit">Sign in</Button>
 			)}
-			<HStack>
-				<Divider />
-				<Text textStyle="sm" whiteSpace="nowrap" color="fg.muted">
-					or continue with
-				</Text>
-				<Divider />
-			</HStack>
 		</Stack>
 	);
 };

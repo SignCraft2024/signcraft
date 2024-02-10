@@ -1,4 +1,4 @@
-import { Container, Stack, HStack, Checkbox, Button } from '@chakra-ui/react';
+import { Container, Stack } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { EmailField } from './Fields/EmailField';
 import { PasswordField } from './Fields/PasswordField';
@@ -78,14 +78,6 @@ export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 								<span className="error">{formik.errors.password}</span>
 							)}
 						</Stack>
-						{isLogin && (
-							<HStack justify="space-between">
-								<Checkbox defaultChecked>Remember me</Checkbox>
-								<Button variant="text" size="sm">
-									Forgot password?
-								</Button>
-							</HStack>
-						)}
 						<FormButton isLogin={isLogin} />
 					</Stack>
 				</FormBody>
