@@ -4,7 +4,7 @@
 # You can adjust the behavior by modifying this file.
 # For more information, see:
 # https://github.com/github/super-linter
-name: Code Quality checks
+name: CI
 
 on:
   push:
@@ -29,10 +29,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
 
-      - name: Install dependencies
+      - name: 🟢 Install dependencies 🟢
         run: npm install
 
-      - name: Lint Code Base
+      - name: 🟢 Lint Code Base 🟢
         uses: github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: true
@@ -40,7 +40,10 @@ jobs:
           DEFAULT_BRANCH: "preprod"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Check formatting with Prettier
+      - name: 🟢 Check formatting with Prettier 🟢
         run: npm run check-format
+
+      - name: 🟢 Build App 🟢
+        run: npm run build
 
 
