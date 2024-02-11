@@ -5,29 +5,29 @@ import Signin from './components/Auth/Signin/Signin';
 import AuthProvider from './security/AuthProvider';
 import ProtectedRoute from './security/ProtectedRoute';
 import DocumentViewerComponent from './components/pdf/pspdfkit/DocumentViewerComponent';
-import Header from './components/Header';
+import Navbar from './components/Navbar';
 
 function App() {
 	return (
 		<AuthProvider>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Login />} />
-					<Route path="/signin" element={<Signin />} />
 					<Route
-						path="/home"
+						path="/"
 						element={
 							<ProtectedRoute>
-								<Header />
+								<Navbar />
 								<HomePage />
 							</ProtectedRoute>
 						}
 					/>
+					<Route path="/login" element={<Login />} />
+					<Route path="/signin" element={<Signin />} />
 					<Route
 						path="/pdf"
 						element={
 							<ProtectedRoute>
-								<Header />
+								<Navbar />
 								<DocumentViewerComponent />
 							</ProtectedRoute>
 						}

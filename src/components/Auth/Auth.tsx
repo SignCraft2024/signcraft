@@ -26,7 +26,7 @@ export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 		handleLogin(values.email, values.password)
 			.then((result: UserCredential) => {
 				console.log(result);
-				navigate('/home');
+				navigate('/');
 			})
 			.catch((error: FirebaseError) => console.log(error.message));
 	};
