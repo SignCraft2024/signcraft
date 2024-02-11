@@ -7,7 +7,8 @@
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-		"format": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\" \"src/**/*.css\"",
+		"format": "prettier --write \"**/*.{ts,tsx,js,md,mdx,css,yaml}\"",
+		"check-format": "prettier --check \"**/*.{ts,tsx,js,md,mdx,css,yaml}\"",
 		"preview": "vite preview"
 	},
 	"dependencies": {
