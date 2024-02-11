@@ -18,7 +18,9 @@ const PdfViewerComponent = (props: PdfViewerComponentProps) => {
 				// The document to open.
 				document: props.document,
 				// Use the public directory URL as a base URL. PSPDFKit will download its library assets from here.
-				baseUrl: `${window.location.protocol}//${window.location.host}/public/`,
+				baseUrl: `${window.location.protocol}//${window.location.host}/${
+					import.meta.env.PUBLIC_URL ?? ''
+				}`,
 			});
 		})();
 
