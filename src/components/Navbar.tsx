@@ -18,7 +18,7 @@ const MenuItem = (props) => {
 	);
 };
 
-const Header = (props) => {
+const Navbar = (props) => {
 	return (
 		<Flex
 			as="nav"
@@ -32,7 +32,9 @@ const Header = (props) => {
 			{...props}
 		>
 			<Flex align="center">
-				<Image src={Logo} height={50} rounded={50} />
+				<Link to={'/'}>
+					<Image src={Logo} height={50} rounded={50} />
+				</Link>
 			</Flex>
 
 			<Box flexBasis={{ base: '100%', md: 'auto' }}>
@@ -42,7 +44,7 @@ const Header = (props) => {
 					direction={['column', 'row', 'row', 'row']}
 					pt={[4, 4, 0, 0]}
 				>
-					<MenuItem to="/home">Home</MenuItem>
+					<MenuItem to="/">Home</MenuItem>
 					<MenuItem to="/pdf">PDF </MenuItem>
 					<MenuItem>
 						<Button
@@ -73,4 +75,4 @@ MenuItem.propTypes = {
 	to: PropTypes.string,
 };
 
-export default Header;
+export default Navbar;

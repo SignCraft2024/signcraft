@@ -1,10 +1,10 @@
 import { Container, Stack } from '@chakra-ui/react';
 import { useFormik } from 'formik';
-import { EmailField } from './Fields/EmailField';
-import { PasswordField } from './Fields/PasswordField';
-import { FormBody } from './AuthForm/FormBody';
-import FormButton from './AuthForm/FormButton';
-import { FormHeader } from './AuthForm/FormHeader';
+import { EmailField } from './fields/EmailField';
+import { PasswordField } from './fields/PasswordField';
+import { FormBody } from './authForm/FormBody';
+import FormButton from './authForm/FormButton';
+import { FormHeader } from './authForm/FormHeader';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import { UserCredential } from 'firebase/auth';
@@ -26,7 +26,7 @@ export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 		handleLogin(values.email, values.password)
 			.then((result: UserCredential) => {
 				console.log(result);
-				navigate('/home');
+				navigate('/');
 			})
 			.catch((error: FirebaseError) => console.log(error.message));
 	};

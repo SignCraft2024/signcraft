@@ -1,33 +1,33 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './components/Homepage/HomePage';
-import Login from './components/Auth/Login/Login';
-import Signin from './components/Auth/Signin/Signin';
+import HomePage from './components/home/HomePage';
+import Login from './components/auth/login/Login';
+import Signin from './components/auth/signin/Signin';
 import AuthProvider from './security/AuthProvider';
 import ProtectedRoute from './security/ProtectedRoute';
 import DocumentViewerComponent from './components/pdf/pspdfkit/DocumentViewerComponent';
-import Header from './components/Header';
+import Navbar from './components/Navbar';
 
 function App() {
 	return (
 		<AuthProvider>
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<Login />} />
-					<Route path="/signin" element={<Signin />} />
 					<Route
-						path="/home"
+						path="/"
 						element={
 							<ProtectedRoute>
-								<Header />
+								<Navbar />
 								<HomePage />
 							</ProtectedRoute>
 						}
 					/>
+					<Route path="/login" element={<Login />} />
+					<Route path="/signin" element={<Signin />} />
 					<Route
 						path="/pdf"
 						element={
 							<ProtectedRoute>
-								<Header />
+								<Navbar />
 								<DocumentViewerComponent />
 							</ProtectedRoute>
 						}
