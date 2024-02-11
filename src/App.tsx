@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './components/Homepage/HomePage';
-import Login from './components/Auth/Login/Login';
-import Signin from './components/Auth/Signin/Signin';
+import HomePage from './components/home/HomePage';
+import Login from './components/auth/login/Login';
+import Signin from './components/auth/signin/Signin';
 import AuthProvider from './security/AuthProvider';
 import ProtectedRoute from './security/ProtectedRoute';
 import DocumentViewerComponent from './components/pdf/pspdfkit/DocumentViewerComponent';

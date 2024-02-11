@@ -33,11 +33,7 @@ const Navbar = (props) => {
 		>
 			<Flex align="center">
 				<Link to={'/'}>
-					<Image
-						src={Logo}
-						height={50}
-						rounded={50}
-					/>
+					<Image src={Logo} height={50} rounded={50} />
 				</Link>
 			</Flex>
 
