@@ -47,6 +47,7 @@ const DraggableSignature: React.FC<DraggableSignatureProps> = ({
 					</button>
 				</div>
 				<img
+				// TODO: Rendre responsive | definir la taille du signature selon la taille du pdf qui s'affiche
 					src={url}
 					width={200}
 					style={styles.img}

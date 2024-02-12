@@ -32,6 +32,7 @@ function MyPdf() {
 			display: 'inline-block',
 			border: '1px solid #000',
 		},
+		// TODO: Rendre responsive | eviter d'avoir un scroll
 		documentBlock: {
 			maxWidth: 800,
 			margin: '20px auto',
