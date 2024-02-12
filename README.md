@@ -17,6 +17,22 @@ Follow these steps to get started with SignCraft:
   npm install
 ```
 
+- Init firebase project and set up Authentication
+- ![img1](https://github.com/SignCraft2024/signcraft/blob/preprod/readme/5.png)
+- ![img1](https://github.com/SignCraft2024/signcraft/blob/preprod/readme/6.png)
+- ![img1](https://github.com/SignCraft2024/signcraft/blob/preprod/readme/7.png)
+- Set .env variable
+- create a .env or rename file in the root of the project
+
+```bash
+VITE_API_KEY='**********'
+VITE_AUTH_DOMAIN='************'
+VITE_PROJECT_ID='***************'
+VITE_STORAGE_BUCKET='***************'
+VITE_MESSAGING_SENDER_ID='***************'
+VITE_APP_ID='*****************'
+```
+
 - Run
 
 ```bash
@@ -31,10 +47,16 @@ Follow these steps to get started with SignCraft:
 
 ## Formatter
 
-Prettier
+check Prettier
 
 ```bash
   npm run format
+```
+
+format with Prettier
+
+```bash
+  npm run check-format
 ```
 
 ## Linter
@@ -44,6 +66,18 @@ ESLint
 ```bash
   npm run lint
 ```
+
+## How to use 💫
+
+- Create an account
+  ![img1](https://github.com/SignCraft2024/signcraft/blob/preprod/readme/1.png)
+
+- Upload a document
+  ![img1](https://github.com/SignCraft2024/signcraft/blob/preprod/readme/2.png)
+
+- Sign the document
+- Download the document
+  ![img1](https://github.com/SignCraft2024/signcraft/blob/preprod/readme/3.png)
 
 ## App link 🟢
 
