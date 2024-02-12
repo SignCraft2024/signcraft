@@ -6,6 +6,7 @@ import AuthProvider from './security/AuthProvider';
 import ProtectedRoute from './security/ProtectedRoute';
 import DocumentViewerComponent from './components/pdf/pspdfkit/DocumentViewerComponent';
 import Navbar from './components/Navbar';
+import MyPdf from './components/pdf/mypdf/MyPdf';
 
 function App() {
 	return (
@@ -32,6 +33,7 @@ function App() {
 							</ProtectedRoute>
 						}
 					/>
+					<Route path="/mypdf" element={<MyPdf/>}/>
 				</Routes>
 			</BrowserRouter>
 		</AuthProvider>
