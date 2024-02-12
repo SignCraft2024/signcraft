@@ -7,13 +7,19 @@ type ModalProps = {
 	children: React.ReactNode;
 	isVisible: boolean;
 	positionTop?: number;
-  style?: CSSProperties
+	style?: CSSProperties;
 };
 
-export const Modal: React.FC<ModalProps> = ({onClose, children, isVisible, style, positionTop}) => {
-  const isSmallScreen = useIsSmallScreen();
+export const Modal: React.FC<ModalProps> = ({
+	onClose,
+	children,
+	isVisible,
+	style,
+	positionTop,
+}) => {
+	const isSmallScreen = useIsSmallScreen();
 
-  const styles: Record<string, CSSProperties> = {
+	const styles: Record<string, CSSProperties> = {
 		container: {
 			position: isSmallScreen ? 'fixed' : 'absolute',
 			backgroundColor: '#FFF',
@@ -38,14 +44,14 @@ export const Modal: React.FC<ModalProps> = ({onClose, children, isVisible, style
 		},
 	};
 
-  if (!isVisible) {
-    return null;
-  }
+	if (!isVisible) {
+		return null;
+	}
 
-  return (
-    <div>
-      <div style={styles.background} onClick={onClose} />
-      <div style={{...styles.container, ...style}}>{children}</div>
-    </div>
-  );
-}
+	return (
+		<div>
+			<div style={styles.background} onClick={onClose} />
+			<div style={{ ...styles.container, ...style }}>{children}</div>
+		</div>
+	);
+};

@@ -1,6 +1,6 @@
-import React, { CSSProperties } from "react";
-import useHover from "../../../../hooks/useHover";
-import { primary45 } from "../../../../utils/colors";
+import React, { CSSProperties } from 'react';
+import useHover from '../../../../hooks/useHover';
+import { primary45 } from '../../../../utils/colors';
 
 type ButtonProps = {
 	title: string;
@@ -56,13 +56,10 @@ export const BigButton: React.FC<ButtonProps> = ({
 	}
 
 	const getColor = (): string => {
-    if (isHovered && !noHover && !disabled)
-			return hoverColor;
-		else if (disabled)
-			return '#999';
-		else
-			return initialColor;
-		}
+		if (isHovered && !noHover && !disabled) return hoverColor;
+		else if (disabled) return '#999';
+		else return initialColor;
+	};
 
 	const styles: Record<string, CSSProperties> = {
 		container: {
@@ -97,4 +94,4 @@ export const BigButton: React.FC<ButtonProps> = ({
 			{title}
 		</button>
 	);
-}
+};

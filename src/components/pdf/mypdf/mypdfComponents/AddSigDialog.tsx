@@ -1,8 +1,8 @@
-import { Dialog } from "./Dialog";
-import SignatureCanvas from "react-signature-canvas";
-import { ConfirmOrCancel } from "./ConfirmOrCancel";
-import React, { CSSProperties, useRef } from "react";
-import { primary45 } from "../../../../utils/colors";
+import { Dialog } from './Dialog';
+import SignatureCanvas from 'react-signature-canvas';
+import { ConfirmOrCancel } from './ConfirmOrCancel';
+import React, { CSSProperties, useRef } from 'react';
+import { primary45 } from '../../../../utils/colors';
 
 type AddSignDialogProps = {
 	autoDate: boolean;
@@ -11,33 +11,38 @@ type AddSignDialogProps = {
 	onConfirm: (url: string) => void;
 };
 
-export const AddSigDialog: React.FC<AddSignDialogProps> = ({ onConfirm, onClose, autoDate, setAutoDate }) => {
-  const sigRef = useRef(null);
+export const AddSigDialog: React.FC<AddSignDialogProps> = ({
+	onConfirm,
+	onClose,
+	autoDate,
+	setAutoDate,
+}) => {
+	const sigRef = useRef(null);
 
-  const styles: Record<string, CSSProperties> = {
-    sigContainer: {
-      display: "flex",
-      justifyContent: "center",
-    },
-    sigBlock: {
-      display: "inline-block",
-      border: `1px solid ${primary45}`,
-    },
-    instructions: {
-      display: "flex",
-      justifyContent: "space-between",
-      textAlign: "center",
-      color: primary45,
-      marginTop: 8,
-      width: 600,
-      alignSelf: "center",
-    },
-    instructionsContainer: {
-      display: "flex",
-      justifyContent: "center",
-    },
-  };
-  return (
+	const styles: Record<string, CSSProperties> = {
+		sigContainer: {
+			display: 'flex',
+			justifyContent: 'center',
+		},
+		sigBlock: {
+			display: 'inline-block',
+			border: `1px solid ${primary45}`,
+		},
+		instructions: {
+			display: 'flex',
+			justifyContent: 'space-between',
+			textAlign: 'center',
+			color: primary45,
+			marginTop: 8,
+			width: 600,
+			alignSelf: 'center',
+		},
+		instructionsContainer: {
+			display: 'flex',
+			justifyContent: 'center',
+		},
+	};
+	return (
 		<Dialog isVisible={true} title={'Add signature'}>
 			<div>
 				<div style={styles.sigContainer}>
@@ -77,4 +82,4 @@ export const AddSigDialog: React.FC<AddSignDialogProps> = ({ onConfirm, onClose,
 			</div>
 		</Dialog>
 	);
-}
+};

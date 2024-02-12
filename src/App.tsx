@@ -33,7 +33,7 @@ function App() {
 							</ProtectedRoute>
 						}
 					/>
-					<Route path="/mypdf" element={<MyPdf/>}/>
+					<Route path="/mypdf" element={<MyPdf />} />
 				</Routes>
 			</BrowserRouter>
 		</AuthProvider>
