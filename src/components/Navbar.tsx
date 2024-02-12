@@ -46,8 +46,8 @@ const Navbar = (props) => {
 					pt={[4, 4, 0, 0]}
 				>
 					<MenuItem to={`${ROUTE_HOME}`}>Home</MenuItem>
-					<MenuItem to={`${ROUTE_PDF_1}`}>PDF 1</MenuItem>
-					<MenuItem to={`${ROUTE_PDF_2}`}>PDF 2</MenuItem>
+					<MenuItem to={`${ROUTE_PDF_1}`}>PDF PSPDFKIT</MenuItem>
+					<MenuItem to={`${ROUTE_PDF_2}`}>PDF CUSTOM</MenuItem>
 					<MenuItem>
 						<Button
 							onClick={() => logOut()}
