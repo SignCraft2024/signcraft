@@ -7,7 +7,13 @@ import ProtectedRoute from './security/ProtectedRoute';
 import DocumentViewerComponent from './components/pdf/pspdfkit/DocumentViewerComponent';
 import Navbar from './components/Navbar';
 import MyPdf from './components/pdf/mypdf/MyPdf';
-import { ROUTE_HOME, ROUTE_LOGIN, ROUTE_PDF_1, ROUTE_PDF_2, ROUTE_SIGNIN } from './utils/routes';
+import {
+	ROUTE_HOME,
+	ROUTE_LOGIN,
+	ROUTE_PDF_1,
+	ROUTE_PDF_2,
+	ROUTE_SIGNIN,
+} from './utils/routes';
 
 function App() {
 	return (
