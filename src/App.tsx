@@ -6,6 +6,14 @@ import AuthProvider from './security/AuthProvider';
 import ProtectedRoute from './security/ProtectedRoute';
 import DocumentViewerComponent from './components/pdf/pspdfkit/DocumentViewerComponent';
 import Navbar from './components/Navbar';
+import MyPdf from './components/pdf/mypdf/MyPdf';
+import {
+	ROUTE_HOME,
+	ROUTE_LOGIN,
+	ROUTE_PDF_1,
+	ROUTE_PDF_2,
+	ROUTE_SIGNIN,
+} from './utils/routes';
 
 function App() {
 	return (
@@ -13,7 +21,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route
-						path="/"
+						path={`${ROUTE_HOME}`}
 						element={
 							<ProtectedRoute>
 								<Navbar />
@@ -21,14 +29,23 @@ function App() {
 							</ProtectedRoute>
 						}
 					/>
-					<Route path="/login" element={<Login />} />
-					<Route path="/signin" element={<Signin />} />
+					<Route path={`${ROUTE_LOGIN}`} element={<Login />} />
+					<Route path={`${ROUTE_SIGNIN}`} element={<Signin />} />
 					<Route
-						path="/pdf"
+						path={`${ROUTE_PDF_1}`}
 						element={
 							<ProtectedRoute>
 								<Navbar />
 								<DocumentViewerComponent />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path={`${ROUTE_PDF_2}`}
+						element={
+							<ProtectedRoute>
+								<Navbar />
+								<MyPdf />
 							</ProtectedRoute>
 						}
 					/>

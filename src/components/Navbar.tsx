@@ -3,6 +3,7 @@ import { Box, Flex, Text, Button, Image } from '@chakra-ui/react';
 import Logo from '../assets/logo.png';
 import { logOut } from '../firebase/firebase';
 import PropTypes from 'prop-types';
+import { ROUTE_HOME, ROUTE_PDF_1, ROUTE_PDF_2 } from '../utils/routes';
 
 const MenuItem = (props) => {
 	const { children, isLast, to = '/', ...rest } = props;
@@ -26,8 +27,8 @@ const Navbar = (props) => {
 			justify="space-between"
 			wrap="wrap"
 			w="100%"
-			mb={4}
-			p={8}
+			mb={2}
+			p={2}
 			bg={['primary.500', 'primary.500', 'transparent', 'transparent']}
 			{...props}
 		>
@@ -44,8 +45,9 @@ const Navbar = (props) => {
 					direction={['column', 'row', 'row', 'row']}
 					pt={[4, 4, 0, 0]}
 				>
-					<MenuItem to="/">Home</MenuItem>
-					<MenuItem to="/pdf">PDF </MenuItem>
+					<MenuItem to={`${ROUTE_HOME}`}>Home</MenuItem>
+					<MenuItem to={`${ROUTE_PDF_1}`}>PDF PSPDFKIT</MenuItem>
+					<MenuItem to={`${ROUTE_PDF_2}`}>PDF CUSTOM</MenuItem>
 					<MenuItem>
 						<Button
 							onClick={() => logOut()}

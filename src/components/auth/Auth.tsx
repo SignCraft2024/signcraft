@@ -11,30 +11,31 @@ import { UserCredential } from 'firebase/auth';
 import { FirebaseError } from 'firebase/app';
 import { handleLogin, handleSignIn } from '../../firebase/firebase';
 import { authSchema } from '../../utils/yupSchema';
+import { ROUTE_HOME } from '../../utils/routes';
 
 interface AuthProps {
 	isLogin: boolean;
 }
-interface input {
+interface inputProps {
 	email: string;
 	password: string;
 }
 
 export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 	const navigate = useNavigate();
-	const loginHanlder = (values: input) => {
+	const loginHanlder = (values: inputProps) => {
 		handleLogin(values.email, values.password)
 			.then((result: UserCredential) => {
 				console.log(result);
-				navigate('/');
+				navigate(`${ROUTE_HOME}`);
 			})
 			.catch((error: FirebaseError) => console.log(error.message));
 	};
-	const createUserHandler = (values: input) => {
+	const createUserHandler = (values: inputProps) => {
 		handleSignIn(values.email, values.password)
 			.then((result: UserCredential) => {
 				console.log(result);
-				navigate('/');
+				navigate(`${ROUTE_HOME}`);
 			})
 			.catch((error: FirebaseError) => console.log(error.message));
 	};
@@ -46,9 +47,7 @@ export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 		},
 		validationSchema: authSchema,
 		onSubmit: (values) => {
-			{
-				isLogin ? loginHanlder(values) : createUserHandler(values);
-			}
+			isLogin ? loginHanlder(values) : createUserHandler(values);
 		},
 	});
 

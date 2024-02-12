@@ -1,6 +1,7 @@
 import { Flex } from '@chakra-ui/react';
 import Hero from '../Hero';
 import Signature from '../../assets/signature.jpg';
+import { ROUTE_PDF_1 } from '../../utils/routes';
 export default function Landing(props) {
 	return (
 		<Flex
@@ -15,7 +16,7 @@ export default function Landing(props) {
 				subtitle="Fast and simple"
 				image={Signature}
 				ctaText="Sign your first document"
-				ctaLink="/pdf"
+				ctaLink={`${ROUTE_PDF_1}`}
 			/>
 		</Flex>
 	);
