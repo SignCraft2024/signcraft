@@ -5,18 +5,18 @@ import React, { CSSProperties } from 'react';
 
 type DialogProps = {
 	isVisible: boolean;
-	body: React.ReactNode;
-	onClose: () => void;
+	children: React.ReactNode;
+	onClose?: () => void;
 	title?: string;
 	noPadding?: boolean;
 	backgroundColor?: string;
 	positionTop?: number;
-  style: CSSProperties;
+  style?: CSSProperties;
 };
 
 export const Dialog: React.FC<DialogProps> = ({
   isVisible,
-  body,
+  children,
   onClose,
   title,
   noPadding,
@@ -60,7 +60,7 @@ export const Dialog: React.FC<DialogProps> = ({
             onClick={onClose}
           />
         </div>
-        <div style={styles.body}>{body}</div>
+        <div style={styles.body}>{children}</div>
       </div>
     </Modal>
   );
