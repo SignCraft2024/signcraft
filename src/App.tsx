@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import HomePage from './components/home/HomePage';
 import Login from './components/auth/login/Login';
 import Signin from './components/auth/signin/Signin';
-import AuthProvider from './security/AuthProvider';
 import ProtectedRoute from './security/ProtectedRoute';
 import DocumentViewerComponent from './components/pdf/pspdfkit/DocumentViewerComponent';
 import Navbar from './components/Navbar';
@@ -14,7 +13,8 @@ import {
 	ROUTE_PDF_2,
 	ROUTE_SIGNIN,
 } from './utils/routes';
-
+import { History } from './components/history/History';
+import AuthProvider from './security/AuthProvider';
 function App() {
 	return (
 		<AuthProvider>
@@ -46,6 +46,15 @@ function App() {
 							<ProtectedRoute>
 								<Navbar />
 								<MyPdf />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/history"
+						element={
+							<ProtectedRoute>
+								<Navbar />
+								<History />
 							</ProtectedRoute>
 						}
 					/>
