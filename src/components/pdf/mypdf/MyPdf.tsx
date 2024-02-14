@@ -1,5 +1,5 @@
 import './MyPdf.css';
-import { CSSProperties, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { PDFDocument, rgb } from 'pdf-lib';
 import dayjs from 'dayjs';
@@ -23,28 +23,6 @@ const downloadURI = (uri: string | ArrayBuffer, name: string) => {
 };
 
 const MyPdf = () => {
-	const styles: Record<string, CSSProperties> = {
-		container: {
-			display: 'flex',
-			justifyContent: 'center',
-			margin: '0 auto',
-		},
-		containerPdf: {
-			display: 'flex',
-			justifyContent: 'center',
-		},
-		documentBlock: {
-			margin: '20px auto',
-			marginTop: 8,
-			border: '1px solid #999',
-		},
-		controls: {
-			display: 'flex',
-			flexDirection: 'column',
-			margin: '0 auto',
-			marginTop: 8,
-		},
-	};
 	const [pdf, setPdf] = useState(null);
 	const [originalPdfFilename, setOriginalPdfFilename] = useState<string | null>(null);
 	const [autoDate, setAutoDate] = useState<boolean>(true);
@@ -62,7 +40,7 @@ const MyPdf = () => {
 
 	return (
 		<div>
-			<div style={styles.container} id='container'>
+			<div id='container-mypdf'>
 				{signatureDialogVisible ? (
 					<AddSigDialog
 						autoDate={autoDate}
@@ -85,8 +63,8 @@ const MyPdf = () => {
 					/>
 				) : null}
 				{pdf ? (
-					<div id="container-pdf" style={styles.containerPdf}>
-						<div style={styles.controls} id='controls-pdf'>
+					<div id="container-pdf">
+						<div id='document-controls'>
 							{!signatureURL ? (
 								<BigButton
 									marginRight={8}
@@ -130,7 +108,7 @@ const MyPdf = () => {
 								/>
 							) : null}
 						</div>
-						<div ref={documentRef} style={styles.documentBlock} id='document-block'>
+						<div ref={documentRef} id='document-block'>
 							{textInputVisible ? (
 								<DraggableText
 									initialText={
