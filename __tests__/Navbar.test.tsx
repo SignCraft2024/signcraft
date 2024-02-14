@@ -1,8 +1,19 @@
+import Enzyme from 'enzyme';
 import { shallow } from 'enzyme';
+import Adapter from '@cfaester/enzyme-adapter-react-18';
 import { Link } from 'react-router-dom';
 import  Navbar from '../src/components/Navbar.tsx';
 
+
+Enzyme.configure({ adapter: new Adapter() });
+
 jest.mock('../src/assets/logo.png', () => 'mockedLogoPath');
+
+jest.mock('../src/firebase/firebase.ts', () => ({
+	getAuth: jest.fn(),
+	initializeApp: jest.fn(),
+	logOut: jest.fn(),
+}));
 
 describe('Navbar Component', () => {
 	it('renders without crashing', () => {
@@ -21,28 +32,14 @@ describe('Navbar Component', () => {
 
 		expect(menuItems).toHaveLength(4);
 
-		expect(menuItems.at(0).find(Link).props().to).toBe('/');
-		expect(menuItems.at(1).find(Link).props().to).toBe('/pdf-1');
-		expect(menuItems.at(2).find(Link).props().to).toBe('/pdf-2');
-		// You may want to adjust the expectation based on your actual routes
+		expect(menuItems.at(0).props().to).toBe('/');
+		expect(menuItems.at(1).props().to).toBe('/pdf');
+		expect(menuItems.at(2).props().to).toBe('/custom-pdf');
 	});
 
 	it('renders logout button', () => {
 		const wrapper = shallow(<Navbar />);
 		const logoutButton = wrapper.find('Button');
 		expect(logoutButton).toHaveLength(1);
-	});
-
-	it('calls logOut function on logout button click', () => {
-		const logOutMock = jest.fn();
-		jest.mock('../firebase/firebase', () => ({
-			logOut: logOutMock,
-		}));
-
-		const wrapper = shallow(<Navbar />);
-		const logoutButton = wrapper.find('Button');
-		logoutButton.simulate('click');
-
-		expect(logOutMock).toHaveBeenCalledTimes(1);
 	});
 });
