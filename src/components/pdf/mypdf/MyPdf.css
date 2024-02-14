@@ -18,7 +18,7 @@ button:focus {
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-	margin-top: 8;
+	margin-top: 8px;
 }
 #document-block {
 	/* margin: 20px auto; */

@@ -1,0 +1,15 @@
+#container-paging-control {
+	margin-left: 8px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+#page-control {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#page-info {
+	padding: 8px;
+	color: #2b6284;
+	font-size: 14px;
+}

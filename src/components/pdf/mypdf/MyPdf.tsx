@@ -9,7 +9,7 @@ import { blobToURL } from '../../../utils/Utils';
 import { BigButton } from './mypdfComponents/BigButton';
 import DraggableText from './mypdfComponents/DraggableText';
 import DraggableSignature from './mypdfComponents/DraggableSignature';
-import PagingControl from './mypdfComponents/PagingControl';
+import PagingControl from './mypdfComponents/pagingControl/PagingControl';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -24,7 +24,9 @@ const downloadURI = (uri: string | ArrayBuffer, name: string) => {
 
 const MyPdf = () => {
 	const [pdf, setPdf] = useState(null);
-	const [originalPdfFilename, setOriginalPdfFilename] = useState<string | null>(null);
+	const [originalPdfFilename, setOriginalPdfFilename] = useState<string | null>(
+		null,
+	);
 	const [autoDate, setAutoDate] = useState<boolean>(true);
 	const [signatureURL, setSignatureURL] = useState(null);
 	const [position, setPosition] = useState(null);
@@ -40,7 +42,7 @@ const MyPdf = () => {
 
 	return (
 		<div>
-			<div id='container-mypdf'>
+			<div id="container-mypdf">
 				{signatureDialogVisible ? (
 					<AddSigDialog
 						autoDate={autoDate}
@@ -64,7 +66,7 @@ const MyPdf = () => {
 				) : null}
 				{pdf ? (
 					<div id="container-pdf">
-						<div id='document-controls'>
+						<div id="document-controls">
 							{!signatureURL ? (
 								<BigButton
 									marginRight={8}
@@ -108,7 +110,7 @@ const MyPdf = () => {
 								/>
 							) : null}
 						</div>
-						<div ref={documentRef} id='document-block'>
+						<div ref={documentRef} id="document-block">
 							{textInputVisible ? (
 								<DraggableText
 									initialText={
@@ -255,6 +257,6 @@ const MyPdf = () => {
 			</div>
 		</div>
 	);
-}
+};
 
 export default MyPdf;
