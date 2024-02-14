@@ -1,5 +1,5 @@
 import './MyPdf.css';
-import { useRef, useState } from 'react';
+import { CSSProperties, useRef, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { PDFDocument, rgb } from 'pdf-lib';
 import dayjs from 'dayjs';
@@ -22,45 +22,47 @@ const downloadURI = (uri: string | ArrayBuffer, name: string) => {
 	document.body.removeChild(link);
 };
 
-function MyPdf() {
-	const styles = {
+const MyPdf = () => {
+	const styles: Record<string, CSSProperties> = {
 		container: {
-			maxWidth: 900,
+			display: 'flex',
+			justifyContent: 'center',
 			margin: '0 auto',
 		},
-		sigBlock: {
-			display: 'inline-block',
-			border: '1px solid #000',
+		containerPdf: {
+			display: 'flex',
+			justifyContent: 'center',
 		},
-		// TODO: Rendre responsive | eviter d'avoir un scroll
 		documentBlock: {
-			maxWidth: 800,
 			margin: '20px auto',
 			marginTop: 8,
 			border: '1px solid #999',
 		},
 		controls: {
-			maxWidth: 800,
+			display: 'flex',
+			flexDirection: 'column',
 			margin: '0 auto',
 			marginTop: 8,
 		},
 	};
 	const [pdf, setPdf] = useState(null);
-	const [autoDate, setAutoDate] = useState(true);
+	const [originalPdfFilename, setOriginalPdfFilename] = useState<string | null>(null);
+	const [autoDate, setAutoDate] = useState<boolean>(true);
 	const [signatureURL, setSignatureURL] = useState(null);
 	const [position, setPosition] = useState(null);
-	const [signatureDialogVisible, setSignatureDialogVisible] = useState(false);
+	const [signatureDialogVisible, setSignatureDialogVisible] =
+		useState<boolean>(false);
 	const [textInputVisible, setTextInputVisible] = useState<
 		boolean | string | null
 	>(false);
-	const [pageNum, setPageNum] = useState(0);
-	const [totalPages, setTotalPages] = useState(0);
+	const [pageNum, setPageNum] = useState<number>(0);
+	const [totalPages, setTotalPages] = useState<number>(0);
 	const [pageDetails, setPageDetails] = useState(null);
 	const documentRef = useRef(null);
 
 	return (
 		<div>
-			<div style={styles.container}>
+			<div style={styles.container} id='container'>
 				{signatureDialogVisible ? (
 					<AddSigDialog
 						autoDate={autoDate}
@@ -77,13 +79,14 @@ function MyPdf() {
 					<Drop
 						onLoaded={async (files) => {
 							const URL = await blobToURL(files[0]);
+							setOriginalPdfFilename(files[0].name);
 							setPdf(URL);
 						}}
 					/>
 				) : null}
 				{pdf ? (
-					<div>
-						<div style={styles.controls}>
+					<div id="container-pdf" style={styles.containerPdf}>
+						<div style={styles.controls} id='controls-pdf'>
 							{!signatureURL ? (
 								<BigButton
 									marginRight={8}
@@ -122,12 +125,12 @@ function MyPdf() {
 									inverted={true}
 									title={'Download'}
 									onClick={() => {
-										downloadURI(pdf, 'file.pdf');
+										downloadURI(pdf, `${originalPdfFilename}`);
 									}}
 								/>
 							) : null}
 						</div>
-						<div ref={documentRef} style={styles.documentBlock}>
+						<div ref={documentRef} style={styles.documentBlock} id='document-block'>
 							{textInputVisible ? (
 								<DraggableText
 									initialText={
@@ -232,7 +235,7 @@ function MyPdf() {
 													x: newX,
 													y: newY - 10,
 													size: 14 * scale,
-													color: rgb(0.074, 0.545, 0.262),
+													color: rgb(0, 0, 0),
 												},
 											);
 										}
@@ -256,7 +259,6 @@ function MyPdf() {
 							>
 								<Page
 									pageNumber={pageNum + 1}
-									width={800}
 									renderAnnotationLayer={false}
 									renderTextLayer={false}
 									onLoadSuccess={(data) => {
