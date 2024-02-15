@@ -5,7 +5,7 @@ import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase/firebase';
 import { AuthContext } from '../../security/AuthProvider';
 
-export const Drop: React.FC<{ onLoaded: (files: Blob[]) => void }> = ({
+export const Drop: React.FC<{ onLoaded: (files: File[]) => void }> = ({
 	onLoaded,
 }) => {
 	const { currentUser } = useContext(AuthContext);

@@ -1,0 +1,24 @@
+#sig-container {
+	display: flex;
+	justify-content: center;
+}
+
+#sig-block {
+	display: inline-block;
+	border: 1px solid #2b6284;
+}
+
+#instructions-container {
+	display: flex;
+	justify-content: center;
+}
+
+#instructions {
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+	color: #2b6284;
+	margin-top: 8px;
+	width: 600px;
+	align-self: center;
+}

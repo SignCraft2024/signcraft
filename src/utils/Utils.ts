@@ -1,4 +1,4 @@
-export function blobToURL(blob: Blob): Promise<string | null> {
+export function blobToURL(blob: Blob | File): Promise<string | null> {
 	return new Promise((resolve) => {
 		const reader = new FileReader();
 		reader.readAsDataURL(blob);
