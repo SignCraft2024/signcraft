@@ -1,7 +1,7 @@
 import './AddSigDialog.css';
 import { Dialog } from '../Dialog';
 import SignatureCanvas from 'react-signature-canvas';
-import { ConfirmOrCancel } from '../ConfirmOrCancel';
+import { ConfirmOrCancel } from '../confirmOrCancelSig/ConfirmOrCancel';
 import React, { useRef } from 'react';
 
 type AddSignDialogProps = {
@@ -18,6 +18,11 @@ export const AddSigDialog: React.FC<AddSignDialogProps> = ({
 	setAutoDate,
 }) => {
 	const sigRef = useRef(null);
+
+	const onConfirmSig = () => {
+		const sigURL = sigRef.current.toDataURL();
+		onConfirm(sigURL);
+	};
 
 	return (
 		<Dialog isVisible={true} title={'Add signature'}>
@@ -49,13 +54,7 @@ export const AddSigDialog: React.FC<AddSignDialogProps> = ({
 					</div>
 				</div>
 
-				<ConfirmOrCancel
-					onCancel={onClose}
-					onConfirm={() => {
-						const sigURL = sigRef.current.toDataURL();
-						onConfirm(sigURL);
-					}}
-				/>
+				<ConfirmOrCancel onCancel={onClose} onConfirm={onConfirmSig} />
 			</div>
 		</Dialog>
 	);
