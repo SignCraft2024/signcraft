@@ -1,7 +1,7 @@
 import { Dialog } from './Dialog';
 import SignatureCanvas from 'react-signature-canvas';
 import { ConfirmOrCancel } from './ConfirmOrCancel';
-import React, { CSSProperties, useRef } from 'react';
+import  React, { CSSProperties, useRef } from 'react';
 import { primary45 } from '../../../../utils/colors';
 
 type AddSignDialogProps = {
