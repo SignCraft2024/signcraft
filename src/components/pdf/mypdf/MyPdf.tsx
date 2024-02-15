@@ -7,7 +7,7 @@ import { AddSigDialog } from './mypdfComponents/addSigDialog/AddSigDialog';
 import { Drop } from '../Drop';
 import { blobToURL } from '../../../utils/Utils';
 import { BigButton } from './mypdfComponents/BigButton';
-import DraggableText from './mypdfComponents/DraggableText';
+import DraggableText from './mypdfComponents/draggableText/DraggableText';
 import DraggableSignature from './mypdfComponents/draggableSignature/DraggableSignature';
 import PagingControl from './mypdfComponents/pagingControl/PagingControl';
 

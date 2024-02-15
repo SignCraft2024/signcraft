@@ -1,4 +1,4 @@
-import './DraggableSignature.css'
+import './DraggableSignature.css';
 import Draggable from 'react-draggable';
 import { FaCheck, FaTimes } from 'react-icons/fa';
 import { errorColor, goodColor } from '../../../../../utils/colors';
@@ -19,8 +19,8 @@ const DraggableSignature: React.FC<DraggableSignatureProps> = ({
 }) => {
 	return (
 		<Draggable onStop={onEnd}>
-			<div id='draggable-signature-container'>
-				<div id='draggable-signature-controls'>
+			<div id="draggable-signature-container">
+				<div id="draggable-signature-controls">
 					<button onClick={onSet}>
 						<FaCheck color={goodColor} />
 					</button>
@@ -28,12 +28,7 @@ const DraggableSignature: React.FC<DraggableSignatureProps> = ({
 						<FaTimes color={errorColor} />
 					</button>
 				</div>
-				<img
-					src={url}
-					width={200}
-					alt="signature"
-					draggable={false}
-				/>
+				<img src={url} width={200} alt="signature" draggable={false} />
 			</div>
 		</Draggable>
 	);

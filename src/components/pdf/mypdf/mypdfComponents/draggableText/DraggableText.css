@@ -1,18 +1,26 @@
-#draggable-signature-container {
+#draggable-text-container {
 	position: absolute;
 	z-index: 100000;
 	border: 2px solid #2b6284;
 }
 
-#draggable-signature-controls {
+#draggable-text-controls {
 	position: absolute;
 	right: 0px;
 	display: inline-block;
 	background-color: #2b6284;
 }
 
-#draggable-signature-controls button {
+#draggable-text-controls button {
 	display: inline-block;
 	cursor: pointer;
 	padding: 4;
+}
+
+#input-text {
+	border: 0;
+	font-size: 20px;
+	padding: 3px;
+	background-color: rgba(0, 0, 0, 0);
+	cursor: move;
 }
