@@ -1,6 +1,6 @@
+import './PagingControl.css';
 import React from 'react';
-import { primary45 } from '../../../../utils/colors';
-import { BigButton } from './BigButton';
+import { BigButton } from '../BigButton';
 
 type PaginControlProps = {
 	totalPages: number;
@@ -13,31 +13,15 @@ const PagingControl: React.FC<PaginControlProps> = ({
 	pageNum,
 	setPageNum,
 }) => {
-	const styles = {
-		container: {
-			marginTop: 8,
-			marginBottom: 8,
-		},
-		inlineFlex: {
-			display: 'flex',
-			justifyContent: 'center',
-			alignItems: 'center',
-		},
-		pageInfo: {
-			padding: 8,
-			color: primary45,
-			fontSize: 14,
-		},
-	};
 	return (
-		<div style={styles.container}>
-			<div style={styles.inlineFlex}>
+		<div id="container-paging-control">
+			<div id="page-control">
 				<BigButton
 					title={'<'}
 					onClick={() => setPageNum(pageNum - 1)}
 					disabled={pageNum - 1 === -1}
 				/>
-				<div style={styles.pageInfo}>
+				<div id="page-info">
 					Page: {pageNum + 1}/{totalPages}
 				</div>
 				<BigButton

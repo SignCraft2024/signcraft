@@ -1,5 +1,6 @@
-import  React, { CSSProperties } from 'react';
-import { BigButton } from './BigButton';
+import './ConfirmOrCancel.css';
+import React from 'react';
+import { BigButton } from '../BigButton';
 
 type ConfirmOrCancelProps = {
 	onCancel: () => void;
@@ -18,24 +19,14 @@ export const ConfirmOrCancel: React.FC<ConfirmOrCancelProps> = ({
 	hideCancel,
 	disabled,
 }) => {
-	const styles: Record<string, CSSProperties> = {
-		actions: {
-			display: 'flex',
-			justifyContent: 'space-between',
-		},
-		cancel: {
-			marginRight: 8,
-		},
-	};
-
 	return (
-		<div style={styles.actions}>
+		<div id="actions">
 			<div>{leftBlock}</div>
 			<div>
 				{!hideCancel ? (
 					<BigButton
 						title={'Cancel'}
-						style={styles.cancel}
+						style={{ marginRight: 8 }}
 						onClick={onCancel}
 					/>
 				) : null}

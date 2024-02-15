@@ -1,7 +1,8 @@
+import './DraggableText.css';
 import Draggable from 'react-draggable';
 import { FaCheck, FaTimes } from 'react-icons/fa';
-import React, { useState, useEffect, useRef, CSSProperties } from 'react';
-import { errorColor, goodColor, primary45 } from '../../../../utils/colors';
+import React, { useState, useEffect, useRef } from 'react';
+import { errorColor, goodColor } from '../../../../../utils/colors';
 
 type DraggableTextProps = {
 	onEnd?: (params: any) => void;
@@ -28,46 +29,20 @@ const DraggableText: React.FC<DraggableTextProps> = ({
 		}
 	}, []);
 
-	const styles: Record<string, CSSProperties> = {
-		container: {
-			position: 'absolute',
-			zIndex: 100000,
-			border: `2px solid ${primary45}`,
-		},
-		controls: {
-			position: 'absolute',
-			right: 0,
-			display: 'inline-block',
-			backgroundColor: primary45,
-			// borderRadius: 4,
-		},
-		smallButton: {
-			display: 'inline-block',
-			cursor: 'pointer',
-			padding: 4,
-		},
-		input: {
-			border: 0,
-			fontSize: 20,
-			padding: 3,
-			backgroundColor: 'rgba(0,0,0,0)',
-			cursor: 'move',
-		},
-	};
 	return (
 		<Draggable onStop={onEnd}>
-			<div style={styles.container}>
-				<div style={styles.controls}>
-					<button style={styles.smallButton} onClick={() => onSet(text)}>
+			<div id="draggable-text-container">
+				<div id="draggable-text-controls">
+					<button onClick={() => onSet(text)}>
 						<FaCheck color={goodColor} />
 					</button>
-					<button style={styles.smallButton} onClick={onCancel}>
+					<button onClick={onCancel}>
 						<FaTimes color={errorColor} />
 					</button>
 				</div>
 				<input
 					ref={inputRef}
-					style={styles.input}
+					id="input-text"
 					value={text}
 					placeholder={'Text'}
 					onChange={(e) => setText(e.target.value)}
