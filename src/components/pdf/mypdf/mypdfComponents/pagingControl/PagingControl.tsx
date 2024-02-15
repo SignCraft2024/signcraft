@@ -1,4 +1,4 @@
-import './PagingControl.css'
+import './PagingControl.css';
 import React from 'react';
 import { BigButton } from '../BigButton';
 
