@@ -1,10 +1,29 @@
-body {
-	font-family: 'Open Sans';
-}
-
 input:focus,
 select:focus,
 textarea:focus,
 button:focus {
 	outline: none;
+}
+
+#container-mypdf {
+	display: flex;
+	justify-content: center;
+	margin: 0 auto;
+}
+#container-pdf {
+	display: flex;
+	justify-content: center;
+}
+#document-controls {
+	display: flex;
+	flex-direction: column;
+	margin: 0 auto;
+	margin-top: 8px;
+}
+#document-block {
+	padding: 0;
+	margin-top: 8;
+	border: 1px solid #999;
+	max-height: 90vh;
+	overflow: auto;
 }

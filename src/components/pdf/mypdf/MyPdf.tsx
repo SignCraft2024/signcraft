@@ -3,13 +3,13 @@ import { useRef, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { PDFDocument, rgb } from 'pdf-lib';
 import dayjs from 'dayjs';
-import { AddSigDialog } from './mypdfComponents/AddSigDialog';
+import { AddSigDialog } from './mypdfComponents/addSigDialog/AddSigDialog';
 import { Drop } from '../Drop';
 import { blobToURL } from '../../../utils/Utils';
 import { BigButton } from './mypdfComponents/BigButton';
-import DraggableText from './mypdfComponents/DraggableText';
-import DraggableSignature from './mypdfComponents/DraggableSignature';
-import PagingControl from './mypdfComponents/PagingControl';
+import DraggableText from './mypdfComponents/draggableText/DraggableText';
+import DraggableSignature from './mypdfComponents/draggableSignature/DraggableSignature';
+import PagingControl from './mypdfComponents/pagingControl/PagingControl';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -22,44 +22,27 @@ const downloadURI = (uri: string | ArrayBuffer, name: string) => {
 	document.body.removeChild(link);
 };
 
-function MyPdf() {
-	const styles = {
-		container: {
-			maxWidth: 900,
-			margin: '0 auto',
-		},
-		sigBlock: {
-			display: 'inline-block',
-			border: '1px solid #000',
-		},
-		documentBlock: {
-			maxWidth: 800,
-			margin: '20px auto',
-			marginTop: 8,
-			border: '1px solid #999',
-		},
-		controls: {
-			maxWidth: 800,
-			margin: '0 auto',
-			marginTop: 8,
-		},
-	};
+const MyPdf = () => {
 	const [pdf, setPdf] = useState(null);
-	const [autoDate, setAutoDate] = useState(true);
+	const [originalPdfFilename, setOriginalPdfFilename] = useState<string | null>(
+		null,
+	);
+	const [autoDate, setAutoDate] = useState<boolean>(false);
 	const [signatureURL, setSignatureURL] = useState(null);
 	const [position, setPosition] = useState(null);
-	const [signatureDialogVisible, setSignatureDialogVisible] = useState(false);
+	const [signatureDialogVisible, setSignatureDialogVisible] =
+		useState<boolean>(false);
 	const [textInputVisible, setTextInputVisible] = useState<
 		boolean | string | null
 	>(false);
-	const [pageNum, setPageNum] = useState(0);
-	const [totalPages, setTotalPages] = useState(0);
+	const [pageNum, setPageNum] = useState<number>(0);
+	const [totalPages, setTotalPages] = useState<number>(0);
 	const [pageDetails, setPageDetails] = useState(null);
 	const documentRef = useRef(null);
 
 	return (
 		<div>
-			<div style={styles.container}>
+			<div id="container-mypdf">
 				{signatureDialogVisible ? (
 					<AddSigDialog
 						autoDate={autoDate}
@@ -76,13 +59,14 @@ function MyPdf() {
 					<Drop
 						onLoaded={async (files) => {
 							const URL = await blobToURL(files[0]);
+							setOriginalPdfFilename(files[0].name);
 							setPdf(URL);
 						}}
 					/>
 				) : null}
 				{pdf ? (
-					<div>
-						<div style={styles.controls}>
+					<div id="container-pdf">
+						<div id="document-controls">
 							{!signatureURL ? (
 								<BigButton
 									marginRight={8}
@@ -121,12 +105,12 @@ function MyPdf() {
 									inverted={true}
 									title={'Download'}
 									onClick={() => {
-										downloadURI(pdf, 'file.pdf');
+										downloadURI(pdf, `${originalPdfFilename}`);
 									}}
 								/>
 							) : null}
 						</div>
-						<div ref={documentRef} style={styles.documentBlock}>
+						<div ref={documentRef} id="document-block">
 							{textInputVisible ? (
 								<DraggableText
 									initialText={
@@ -231,7 +215,7 @@ function MyPdf() {
 													x: newX,
 													y: newY - 10,
 													size: 14 * scale,
-													color: rgb(0.074, 0.545, 0.262),
+													color: rgb(0, 0, 0),
 												},
 											);
 										}
@@ -254,8 +238,8 @@ function MyPdf() {
 								}}
 							>
 								<Page
+									width={700}
 									pageNumber={pageNum + 1}
-									width={800}
 									renderAnnotationLayer={false}
 									renderTextLayer={false}
 									onLoadSuccess={(data) => {
@@ -274,6 +258,6 @@ function MyPdf() {
 			</div>
 		</div>
 	);
-}
+};
 
 export default MyPdf;
