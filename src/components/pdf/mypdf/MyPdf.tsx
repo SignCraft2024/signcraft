@@ -8,7 +8,7 @@ import { Drop } from '../Drop';
 import { blobToURL } from '../../../utils/Utils';
 import { BigButton } from './mypdfComponents/BigButton';
 import DraggableText from './mypdfComponents/DraggableText';
-import DraggableSignature from './mypdfComponents/DraggableSignature';
+import DraggableSignature from './mypdfComponents/draggableSignature/DraggableSignature';
 import PagingControl from './mypdfComponents/pagingControl/PagingControl';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
