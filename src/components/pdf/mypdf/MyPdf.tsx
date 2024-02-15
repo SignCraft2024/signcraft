@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { PDFDocument, rgb } from 'pdf-lib';
 import dayjs from 'dayjs';
-import { AddSigDialog } from './mypdfComponents/AddSigDialog';
+import { AddSigDialog } from './mypdfComponents/addSigDialog/AddSigDialog';
 import { Drop } from '../Drop';
 import { blobToURL } from '../../../utils/Utils';
 import { BigButton } from './mypdfComponents/BigButton';
@@ -27,7 +27,7 @@ const MyPdf = () => {
 	const [originalPdfFilename, setOriginalPdfFilename] = useState<string | null>(
 		null,
 	);
-	const [autoDate, setAutoDate] = useState<boolean>(true);
+	const [autoDate, setAutoDate] = useState<boolean>(false);
 	const [signatureURL, setSignatureURL] = useState(null);
 	const [position, setPosition] = useState(null);
 	const [signatureDialogVisible, setSignatureDialogVisible] =

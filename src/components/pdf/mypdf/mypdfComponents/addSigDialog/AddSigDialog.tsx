@@ -1,8 +1,8 @@
-import { Dialog } from './Dialog';
+import './AddSigDialog.css';
+import { Dialog } from '../Dialog';
 import SignatureCanvas from 'react-signature-canvas';
-import { ConfirmOrCancel } from './ConfirmOrCancel';
-import React, { CSSProperties, useRef } from 'react';
-import { primary45 } from '../../../../utils/colors';
+import { ConfirmOrCancel } from '../ConfirmOrCancel';
+import React, { useRef } from 'react';
 
 type AddSignDialogProps = {
 	autoDate: boolean;
@@ -19,47 +19,24 @@ export const AddSigDialog: React.FC<AddSignDialogProps> = ({
 }) => {
 	const sigRef = useRef(null);
 
-	const styles: Record<string, CSSProperties> = {
-		sigContainer: {
-			display: 'flex',
-			justifyContent: 'center',
-		},
-		sigBlock: {
-			display: 'inline-block',
-			border: `1px solid ${primary45}`,
-		},
-		instructions: {
-			display: 'flex',
-			justifyContent: 'space-between',
-			textAlign: 'center',
-			color: primary45,
-			marginTop: 8,
-			width: 600,
-			alignSelf: 'center',
-		},
-		instructionsContainer: {
-			display: 'flex',
-			justifyContent: 'center',
-		},
-	};
 	return (
 		<Dialog isVisible={true} title={'Add signature'}>
 			<div>
-				<div style={styles.sigContainer}>
-					<div style={styles.sigBlock}>
+				<div id="sig-container">
+					<div id="sig-block">
 						<SignatureCanvas
 							velocityFilterWeight={1}
 							ref={sigRef}
 							canvasProps={{
-								width: '600',
+								width: 600,
 								height: 200,
 								className: 'sigCanvas',
 							}}
 						/>
 					</div>
 				</div>
-				<div style={styles.instructionsContainer}>
-					<div style={styles.instructions}>
+				<div id="instructions-container">
+					<div id="instructions">
 						<div>
 							Auto date/time{' '}
 							<input
