@@ -238,6 +238,7 @@ const MyPdf = () => {
 								}}
 							>
 								<Page
+									width={700}
 									pageNumber={pageNum + 1}
 									renderAnnotationLayer={false}
 									renderTextLayer={false}
