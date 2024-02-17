@@ -41,6 +41,7 @@
 	},
 	"devDependencies": {
 		"@cfaester/enzyme-adapter-react-18": "^0.7.1",
+		"@testing-library/react": "^14.2.1",
 		"@types/dotenv": "^8.2.0",
 		"@types/jest": "^29.5.12",
 		"@types/react": "^18.2.43",
@@ -73,6 +74,7 @@
 			"<rootDir>/__mocks__/importMeta.ts"
 		],
 		"moduleNameMapper": {
+			"\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga|oga|json)$": "identity-obj-proxy",
 			"\\.(css|less|sass|scss)$": "identity-obj-proxy"
 		}
 	}
