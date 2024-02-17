@@ -23,13 +23,13 @@ interface inputProps {
 
 export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 	const navigate = useNavigate();
-	const loginHanlder = (values: inputProps) => {
+	const loginHandler = (values: inputProps) => {
 		handleLogin(values.email, values.password)
 			.then((result: UserCredential) => {
 				console.log(result);
 				navigate(`${ROUTE_HOME}`);
 			})
-			.catch((error: FirebaseError) => console.log(error.message));
+			.catch((error: FirebaseError) => alert(error.message));
 	};
 	const createUserHandler = (values: inputProps) => {
 		handleSignIn(values.email, values.password)
@@ -47,7 +47,7 @@ export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 		},
 		validationSchema: authSchema,
 		onSubmit: (values) => {
-			isLogin ? loginHanlder(values) : createUserHandler(values);
+			isLogin ? loginHandler(values) : createUserHandler(values);
 		},
 	});
 
