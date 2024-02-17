@@ -50,7 +50,7 @@ export default function Landing(props) {
 						Log in to get started
 					</Button>
 				)}
-				</Flex>
+			</Flex>
 		</Flex>
 	);
 }
