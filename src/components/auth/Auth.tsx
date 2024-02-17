@@ -12,6 +12,7 @@ import { FirebaseError } from 'firebase/app';
 import { handleLogin, handleSignIn } from '../../firebase/firebase';
 import { authSchema } from '../../utils/yupSchema';
 import { ROUTE_HOME } from '../../utils/routes';
+import { useState } from 'react';
 
 interface AuthProps {
 	isLogin: boolean;
@@ -23,13 +24,14 @@ interface inputProps {
 
 export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 	const navigate = useNavigate();
+	const [error , setError ] = useState('');
 	const loginHandler = (values: inputProps) => {
 		handleLogin(values.email, values.password)
 			.then((result: UserCredential) => {
 				console.log(result);
 				navigate(`${ROUTE_HOME}`);
 			})
-			.catch((error: FirebaseError) => alert(error.message));
+			.catch((error: FirebaseError) => setError(error.message));
 	};
 	const createUserHandler = (values: inputProps) => {
 		handleSignIn(values.email, values.password)
@@ -76,6 +78,7 @@ export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 							{formik.touched.password && formik.errors.password && (
 								<span className="error">{formik.errors.password}</span>
 							)}
+							<span>{error}</span>
 						</Stack>
 						<FormButton isLogin={isLogin} />
 					</Stack>
