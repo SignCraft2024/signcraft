@@ -24,8 +24,8 @@ export function History() {
 	const [files, setFiles] = useState<StorageReference[]>([]);
 
 	const openInNewTab = (url) => {
-		window.open(url, "_blank", "noreferrer");
-	  };
+		window.open(url, '_blank', 'noreferrer');
+	};
 
 	const download = (path: string) => {
 		getDownloadURL(ref(storage, path))
