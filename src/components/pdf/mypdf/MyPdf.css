@@ -24,6 +24,6 @@ button:focus {
 	padding: 0;
 	margin-top: 8;
 	border: 1px solid #999;
-	max-height: 90vh;
+	max-height: 90vh;p
 	overflow: auto;
 }

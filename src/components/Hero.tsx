@@ -24,7 +24,7 @@ export default function Hero({
 			justify={{ base: 'center', md: 'space-around', xl: 'space-between' }}
 			direction={{ base: 'column-reverse', md: 'row' }}
 			// nowrap="no-wrap"
-			minH="70vh"
+			minH="65vh"
 			px={8}
 			mb={16}
 			{...rest}
@@ -69,7 +69,7 @@ export default function Hero({
 					No credit card required.
 				</Text>
 			</Stack>
-			<Box w={{ base: '80%', sm: '60%', md: '50%' }} mb={{ base: 12, md: 0 }}>
+			<Box w={{ base: '80%', sm: '60%', md: '45%' }} mb={{ base: 12, md: 0 }}>
 				<Image src={image} rounded={30} />
 			</Box>
 		</Flex>
