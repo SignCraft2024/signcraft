@@ -43,6 +43,9 @@ jobs:
       - name: 🟢 Check formatting with Prettier 🟢
         run: npm run check-format
 
+      - name: 🟢 Run testing 🟢
+        run: npm run test
+
       - name: 🟢 Build App 🟢
         run: npm run build
 
