@@ -1,4 +1,10 @@
-import { Container, Stack } from '@chakra-ui/react';
+import {
+	Container,
+	Stack,
+	Alert,
+	AlertIcon,
+	AlertDescription,
+} from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { EmailField } from './fields/EmailField';
 import { PasswordField } from './fields/PasswordField';
@@ -12,32 +18,54 @@ import { FirebaseError } from 'firebase/app';
 import { handleLogin, handleSignIn } from '../../firebase/firebase';
 import { authSchema } from '../../utils/yupSchema';
 import { ROUTE_HOME } from '../../utils/routes';
+import { useState } from 'react';
 
 interface AuthProps {
 	isLogin: boolean;
 }
-interface inputProps {
+
+interface InputProps {
 	email: string;
 	password: string;
 }
 
 export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
+	const [errorMessage, setErrorMessage] = useState<string>('');
+
 	const navigate = useNavigate();
-	const loginHanlder = (values: inputProps) => {
+
+	const loginHandler = (values: InputProps) => {
 		handleLogin(values.email, values.password)
 			.then((result: UserCredential) => {
 				console.log(result);
 				navigate(`${ROUTE_HOME}`);
 			})
-			.catch((error: FirebaseError) => console.log(error.message));
+			.catch((error: FirebaseError) => {
+				let errorMessage = '';
+				if (error.code === 'auth/invalid-credential') {
+					errorMessage = 'Email incorrect or wrong password. Please try again.';
+				} else {
+					errorMessage = error.message;
+				}
+				setErrorMessage(errorMessage);
+			});
 	};
-	const createUserHandler = (values: inputProps) => {
+
+	const createUserHandler = (values: InputProps) => {
 		handleSignIn(values.email, values.password)
 			.then((result: UserCredential) => {
 				console.log(result);
 				navigate(`${ROUTE_HOME}`);
 			})
-			.catch((error: FirebaseError) => console.log(error.message));
+			.catch((error: FirebaseError) => {
+				let errorMessage = '';
+				if (error.code === 'auth/email-already-in-use') {
+					errorMessage = 'Email already used by another account.';
+				} else {
+					errorMessage = error.message;
+				}
+				setErrorMessage(errorMessage);
+			});
 	};
 
 	const formik = useFormik({
@@ -47,7 +75,7 @@ export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 		},
 		validationSchema: authSchema,
 		onSubmit: (values) => {
-			isLogin ? loginHanlder(values) : createUserHandler(values);
+			isLogin ? loginHandler(values) : createUserHandler(values);
 		},
 	});
 
@@ -57,6 +85,12 @@ export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 			py={{ base: '12', md: '24' }}
 			px={{ base: '0', sm: '8' }}
 		>
+			{errorMessage && (
+				<Alert status="error" mb={4}>
+					<AlertIcon />
+					<AlertDescription>{errorMessage}</AlertDescription>
+				</Alert>
+			)}
 			<Stack spacing="8">
 				<FormHeader isLogin={isLogin} />
 				<FormBody onSubmit={formik.handleSubmit}>
