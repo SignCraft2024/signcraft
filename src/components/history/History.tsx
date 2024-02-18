@@ -15,14 +15,13 @@ import {
 	Td,
 	TableCaption,
 	TableContainer,
-	Button,
+	Button
 } from '@chakra-ui/react';
 import { storage } from '../../firebase/firebase';
 
 export function History() {
 	const { currentUser } = useContext(AuthContext);
 	const [files, setFiles] = useState<StorageReference[]>([]);
-	const [error, setError] = useState<string | null>(null);
 
 	const openInNewTab = (url) => {
 		window.open(url, '_blank', 'noreferrer');
@@ -47,13 +46,11 @@ export function History() {
 			})
 			.catch((error) => {
 				console.error('Error fetching files:', error);
-				setError('Error fetching files: ' + error.message);
 			});
 	}, [currentUser]);
 
 	return (
 		<TableContainer>
-			{error && <div>Une erreur est survenue lors de la récupération des fichiers: {error}</div>}
 			<Table variant="simple">
 				<TableCaption>History</TableCaption>
 				<Thead>
