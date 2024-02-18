@@ -15,7 +15,7 @@ import {
 	Td,
 	TableCaption,
 	TableContainer,
-	Button
+	Button,
 } from '@chakra-ui/react';
 import { storage } from '../../firebase/firebase';
 

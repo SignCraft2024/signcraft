@@ -1,4 +1,10 @@
-import { Container, Stack, Alert, AlertIcon, AlertDescription } from '@chakra-ui/react';
+import {
+	Container,
+	Stack,
+	Alert,
+	AlertIcon,
+	AlertDescription,
+} from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { EmailField } from './fields/EmailField';
 import { PasswordField } from './fields/PasswordField';
@@ -44,7 +50,7 @@ export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 				setErrorMessage(errorMessage);
 			});
 	};
-	
+
 	const createUserHandler = (values: InputProps) => {
 		handleSignIn(values.email, values.password)
 			.then((result: UserCredential) => {

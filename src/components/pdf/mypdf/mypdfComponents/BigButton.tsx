@@ -1,4 +1,4 @@
-import  React, { CSSProperties } from 'react';
+import React, { CSSProperties } from 'react';
 import useHover from '../../../../hooks/useHover';
 import { primary45 } from '../../../../utils/colors';
 
