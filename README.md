@@ -1,5 +1,7 @@
 # Signcraft 💫
 
+[![CI](https://github.com/SignCraft2024/signcraft/actions/workflows/CI.yml/badge.svg)](https://github.com/SignCraft2024/signcraft/actions/workflows/CI.yml)
+
 ## Code coverage
 
 [![Code coverage with codecov](https://codecov.io/gh/SignCraft2024/signcraft/graph/badge.svg?token=3LWVU9VKBV)](https://codecov.io/gh/SignCraft2024/signcraft)
