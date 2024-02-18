@@ -10,7 +10,7 @@
 		"format": "prettier --write \"**/*.{ts,tsx,js,md,mdx,css,yaml}\" --ignore-path .prettierignore",
 		"check-format": "prettier --check \"**/*.{ts,tsx,js,md,mdx,css,yaml}\" --ignore-path .prettierignore",
 		"preview": "vite preview",
-		"test": "jest"
+		"test": "jest --coverage"
 	},
 	"dependencies": {
 		"@chakra-ui/react": "^2.8.2",
