@@ -1,5 +1,9 @@
 # Signcraft 💫
 
+## Code coverage
+
+[![Code coverage with codecov](https://codecov.io/gh/SignCraft2024/signcraft/graph/badge.svg?token=3LWVU9VKBV)](https://codecov.io/gh/SignCraft2024/signcraft)
+
 ## Getting Started 🚀
 
 Follow these steps to get started with SignCraft:
