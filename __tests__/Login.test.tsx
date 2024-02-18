@@ -8,36 +8,35 @@ import { handleLogin, handleSignIn } from '../src/firebase/firebase';
 
 configure({ adapter: new Adapter() });
 
-
 jest.mock('firebase/auth', () => ({
-    getAuth: jest.fn(),
+	getAuth: jest.fn(),
 }));
 
 jest.mock('../src/firebase/firebase.ts', () => ({
-    initializeApp: jest.fn(),
-    logOut: jest.fn(),
-    handleLogin: jest.fn(),
-    handleSignIn: jest.fn(),
+	initializeApp: jest.fn(),
+	logOut: jest.fn(),
+	handleLogin: jest.fn(),
+	handleSignIn: jest.fn(),
 }));
 
 jest.mock('react-router-dom', () => ({
-    ...jest.requireActual('react-router-dom'),
-    useNavigate: () => jest.fn(),
+	...jest.requireActual('react-router-dom'),
+	useNavigate: () => jest.fn(),
 }));
 
 describe('Login component', () => {
-    beforeEach(() => {
-        (getAuth as jest.Mock).mockClear();
-        (handleLogin as jest.Mock).mockClear();
-        (handleSignIn as jest.Mock).mockClear();
-    }); 
-  it('renders without crashing', () => {
-    const wrapper = shallow(<Login />);
-    expect(wrapper.exists()).toBe(true);
-  });
+	beforeEach(() => {
+		(getAuth as jest.Mock).mockClear();
+		(handleLogin as jest.Mock).mockClear();
+		(handleSignIn as jest.Mock).mockClear();
+	});
+	it('renders without crashing', () => {
+		const wrapper = shallow(<Login />);
+		expect(wrapper.exists()).toBe(true);
+	});
 
-  it('renders Auth component with isLogin prop set to true', () => {
-    const wrapper = shallow(<Login />);
-    expect(wrapper.find(Auth).prop('isLogin')).toBe(true);
-  });
+	it('renders Auth component with isLogin prop set to true', () => {
+		const wrapper = shallow(<Login />);
+		expect(wrapper.find(Auth).prop('isLogin')).toBe(true);
+	});
 });
