@@ -49,7 +49,6 @@ export function History() {
 			});
 	}, [currentUser]);
 
-	console.log(files[0]);
 	return (
 		<TableContainer>
 			<Table variant="simple">

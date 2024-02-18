@@ -3,14 +3,12 @@ import HomePage from './components/home/HomePage';
 import Login from './components/auth/login/Login';
 import Signin from './components/auth/signin/Signin';
 import ProtectedRoute from './security/ProtectedRoute';
-import DocumentViewerComponent from './components/pdf/pspdfkit/DocumentViewerComponent';
 import Navbar from './components/Navbar';
 import MyPdf from './components/pdf/mypdf/MyPdf';
 import {
 	ROUTE_HOME,
 	ROUTE_LOGIN,
-	ROUTE_PDF_1,
-	ROUTE_PDF_2,
+	ROUTE_PDF,
 	ROUTE_SIGNIN,
 } from './utils/routes';
 import { History } from './components/history/History';
@@ -32,16 +30,7 @@ function App() {
 					<Route path={`${ROUTE_LOGIN}`} element={<Login />} />
 					<Route path={`${ROUTE_SIGNIN}`} element={<Signin />} />
 					<Route
-						path={`${ROUTE_PDF_1}`}
-						element={
-							<ProtectedRoute>
-								<Navbar />
-								<DocumentViewerComponent />
-							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path={`${ROUTE_PDF_2}`}
+						path={`${ROUTE_PDF}`}
 						element={
 							<ProtectedRoute>
 								<Navbar />

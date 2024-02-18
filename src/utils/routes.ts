@@ -4,5 +4,6 @@ export const ROUTE_HOME = '/';
 export const ROUTE_LOGIN = '/login';
 export const ROUTE_SIGNIN = '/signin';
 // PDF
-export const ROUTE_PDF_1 = '/pdf';
-export const ROUTE_PDF_2 = '/custom-pdf';
+export const ROUTE_PDF = '/pdf';
+// HISTORY
+export const ROUTE_HISTORY = '/history';
