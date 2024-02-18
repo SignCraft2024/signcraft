@@ -47,10 +47,10 @@ jobs:
         run: npm run test
 
       - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v4.0.1
-        env:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          slug: SignCraft2024/signcraft
+        uses: codecov/codecov-action@v3
+        # env:
+        #   token: ${{ secrets.CODECOV_TOKEN }}
+        #   slug: SignCraft2024/signcraft
 
       - name: 🟢 Build App 🟢
         run: npm run build

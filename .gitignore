@@ -30,5 +30,4 @@ dist-ssr
 #ignore pspdfkit
 public/pspdfkit-lib
 
-# coverage
 coverage
