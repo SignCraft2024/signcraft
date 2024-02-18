@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import copy from 'rollup-plugin-copy';
+import EnvironmentPlugin from 'vite-plugin-environment';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,6 +15,7 @@ export default defineConfig({
 			],
 			hook: 'buildStart',
 		}),
+		EnvironmentPlugin('all'),
 		react(),
 	],
 });
