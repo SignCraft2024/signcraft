@@ -4,22 +4,38 @@ import Adapter from '@cfaester/enzyme-adapter-react-18';
 import { mount, ReactWrapper, shallow, ShallowWrapper } from 'enzyme';
 import { act } from 'react-dom/test-utils';
 import { History } from '../src/components/history/History.tsx';
-import { listAll} from 'firebase/storage';
-import { TableCaption, Th, Td} from '@chakra-ui/react';
+import { listAll } from 'firebase/storage';
+import { TableCaption, Th, Td } from '@chakra-ui/react';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-
 jest.mock('@chakra-ui/react', () => ({
 	...jest.requireActual('@chakra-ui/react'),
-	Table: ({ children }: { children: React.ReactNode }) => <table>{children}</table>,
-	TableCaption: ({ children }: { children: React.ReactNode }) => <caption>{children}</caption>,
-	Thead: ({ children }: { children: React.ReactNode }) => <thead>{children}</thead>,
-	Tbody: ({ children }: { children: React.ReactNode }) => <tbody>{children}</tbody>,
+	Table: ({ children }: { children: React.ReactNode }) => (
+		<table>{children}</table>
+	),
+	TableCaption: ({ children }: { children: React.ReactNode }) => (
+		<caption>{children}</caption>
+	),
+	Thead: ({ children }: { children: React.ReactNode }) => (
+		<thead>{children}</thead>
+	),
+	Tbody: ({ children }: { children: React.ReactNode }) => (
+		<tbody>{children}</tbody>
+	),
 	Tr: ({ children }: { children: React.ReactNode }) => <tr>{children}</tr>,
 	Th: ({ children }: { children: React.ReactNode }) => <th>{children}</th>,
 	Td: ({ children }: { children: React.ReactNode }) => <td>{children}</td>,
-	TableContainer: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
+	TableContainer: ({ children }: { children: React.ReactNode }) => (
+		<div>{children}</div>
+	),
+	Button: ({
+		children,
+		onClick,
+	}: {
+		children: React.ReactNode;
+		onClick?: () => void;
+	}) => <button onClick={onClick}>{children}</button>,
 }));
 
 jest.mock('@emotion/react', () => ({
@@ -53,7 +69,6 @@ describe('History Component', () => {
 		});
 
 		jest.spyOn(console, 'error').mockImplementation(() => {}); // Suppress console.error
-
 	});
 
 	it('renders without crashing', () => {
@@ -62,8 +77,10 @@ describe('History Component', () => {
 
 	it('renders the component with file names', async () => {
 		const mockListAll = listAll as jest.Mock;
-		const mockFileNames = ['file1.txt', 'file2.txt'];
-		mockListAll.mockResolvedValue({ items: mockFileNames.map((name) => ({ name })) } as any);
+		const mockFileNames = ['file1.txt', 'Download'];
+		mockListAll.mockResolvedValue({
+			items: mockFileNames.map((name) => ({ name })),
+		} as any);
 
 		await act(async () => {
 			wrapper = mount(<History />);
@@ -74,7 +91,7 @@ describe('History Component', () => {
 		expect(wrapper.find(TableCaption).text()).toBe('History');
 		expect(wrapper.find(Th).text()).toBe('File');
 
-		mockFileNames.forEach((fileName,index) => {
+		mockFileNames.forEach((fileName, index) => {
 			expect(wrapper.find(Td).at(index).text()).toContain(fileName);
 		});
 	});
@@ -89,6 +106,9 @@ describe('History Component', () => {
 
 		wrapper.update();
 
-		expect(console.error).toHaveBeenCalledWith('Error fetching files:', expect.any(Error));
+		expect(console.error).toHaveBeenCalledWith(
+			'Error fetching files:',
+			expect.any(Error),
+		);
 	});
 });

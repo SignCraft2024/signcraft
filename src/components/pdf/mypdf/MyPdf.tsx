@@ -40,6 +40,84 @@ const MyPdf = () => {
 	const [pageDetails, setPageDetails] = useState(null);
 	const documentRef = useRef(null);
 
+	const onReset = () => {
+		setTextInputVisible(false);
+		setSignatureDialogVisible(false);
+		setSignatureURL(null);
+		setPdf(null);
+		setTotalPages(0);
+		setPageNum(0);
+		setPageDetails(null);
+	};
+
+	const onSetDraggableText = async (text) => {
+		const { originalHeight, originalWidth } = pageDetails;
+		const scale = originalWidth / documentRef.current.clientWidth;
+		const y =
+			documentRef.current.clientHeight -
+			(position.y +
+				12 * scale -
+				position.offsetY -
+				documentRef.current.offsetTop);
+		const x =
+			position.x - 166 - position.offsetX - documentRef.current.offsetLeft;
+		// new XY in relation to actual document size
+		const newY = (y * originalHeight) / documentRef.current.clientHeight;
+		const newX = (x * originalWidth) / documentRef.current.clientWidth;
+		const pdfDoc = await PDFDocument.load(pdf);
+		const pages = pdfDoc.getPages();
+		const firstPage = pages[pageNum];
+		firstPage.drawText(text, {
+			x: newX,
+			y: newY,
+			size: 20 * scale,
+		});
+		const pdfBytes = await pdfDoc.save();
+		const blob = new Blob([new Uint8Array(pdfBytes)]);
+		const URL = await blobToURL(blob);
+		setPdf(URL);
+		setPosition(null);
+		setTextInputVisible(false);
+	};
+
+	const onSetDraggableSignature = async () => {
+		const { originalHeight, originalWidth } = pageDetails;
+		const scale = originalWidth / documentRef.current.clientWidth;
+		const y =
+			documentRef.current.clientHeight -
+			(position.y - position.offsetY + 64 - documentRef.current.offsetTop);
+		const x =
+			position.x - 160 - position.offsetX - documentRef.current.offsetLeft;
+		// new XY in relation to actual document size
+		const newY = (y * originalHeight) / documentRef.current.clientHeight;
+		const newX = (x * originalWidth) / documentRef.current.clientWidth;
+		const pdfDoc = await PDFDocument.load(pdf);
+		const pages = pdfDoc.getPages();
+		const firstPage = pages[pageNum];
+		const pngImage = await pdfDoc.embedPng(signatureURL);
+		const pngDims = pngImage.scale(scale * 0.3);
+		firstPage.drawImage(pngImage, {
+			x: newX,
+			y: newY,
+			width: pngDims.width,
+			height: pngDims.height,
+		});
+		if (autoDate) {
+			firstPage.drawText(`Signed ${dayjs().format('M/d/YYYY HH:mm:ss ZZ')}`, {
+				x: newX,
+				y: newY - 10,
+				size: 14 * scale,
+				color: rgb(0, 0, 0),
+			});
+		}
+		const pdfBytes = await pdfDoc.save();
+		const blob = new Blob([new Uint8Array(pdfBytes)]);
+		const URL = await blobToURL(blob);
+		setPdf(URL);
+		setPosition(null);
+		setSignatureURL(null);
+	};
+
 	return (
 		<div>
 			<div id="container-mypdf">
@@ -86,19 +164,7 @@ const MyPdf = () => {
 								title={'Add Text'}
 								onClick={() => setTextInputVisible(true)}
 							/>
-							<BigButton
-								marginRight={8}
-								title={'Reset'}
-								onClick={() => {
-									setTextInputVisible(false);
-									setSignatureDialogVisible(false);
-									setSignatureURL(null);
-									setPdf(null);
-									setTotalPages(0);
-									setPageNum(0);
-									setPageDetails(null);
-								}}
-							/>
+							<BigButton marginRight={8} title={'Reset'} onClick={onReset} />
 							{pdf ? (
 								<BigButton
 									marginRight={8}
@@ -120,48 +186,7 @@ const MyPdf = () => {
 									}
 									onCancel={() => setTextInputVisible(false)}
 									onEnd={setPosition}
-									onSet={async (text) => {
-										const { originalHeight, originalWidth } = pageDetails;
-										const scale =
-											originalWidth / documentRef.current.clientWidth;
-
-										const y =
-											documentRef.current.clientHeight -
-											(position.y +
-												12 * scale -
-												position.offsetY -
-												documentRef.current.offsetTop);
-										const x =
-											position.x -
-											166 -
-											position.offsetX -
-											documentRef.current.offsetLeft;
-
-										// new XY in relation to actual document size
-										const newY =
-											(y * originalHeight) / documentRef.current.clientHeight;
-										const newX =
-											(x * originalWidth) / documentRef.current.clientWidth;
-
-										const pdfDoc = await PDFDocument.load(pdf);
-
-										const pages = pdfDoc.getPages();
-										const firstPage = pages[pageNum];
-
-										firstPage.drawText(text, {
-											x: newX,
-											y: newY,
-											size: 20 * scale,
-										});
-
-										const pdfBytes = await pdfDoc.save();
-										const blob = new Blob([new Uint8Array(pdfBytes)]);
-
-										const URL = await blobToURL(blob);
-										setPdf(URL);
-										setPosition(null);
-										setTextInputVisible(false);
-									}}
+									onSet={onSetDraggableText}
 								/>
 							) : null}
 							{signatureURL ? (
@@ -170,64 +195,7 @@ const MyPdf = () => {
 									onCancel={() => {
 										setSignatureURL(null);
 									}}
-									onSet={async () => {
-										const { originalHeight, originalWidth } = pageDetails;
-										const scale =
-											originalWidth / documentRef.current.clientWidth;
-
-										const y =
-											documentRef.current.clientHeight -
-											(position.y -
-												position.offsetY +
-												64 -
-												documentRef.current.offsetTop);
-										const x =
-											position.x -
-											160 -
-											position.offsetX -
-											documentRef.current.offsetLeft;
-
-										// new XY in relation to actual document size
-										const newY =
-											(y * originalHeight) / documentRef.current.clientHeight;
-										const newX =
-											(x * originalWidth) / documentRef.current.clientWidth;
-
-										const pdfDoc = await PDFDocument.load(pdf);
-
-										const pages = pdfDoc.getPages();
-										const firstPage = pages[pageNum];
-
-										const pngImage = await pdfDoc.embedPng(signatureURL);
-										const pngDims = pngImage.scale(scale * 0.3);
-
-										firstPage.drawImage(pngImage, {
-											x: newX,
-											y: newY,
-											width: pngDims.width,
-											height: pngDims.height,
-										});
-
-										if (autoDate) {
-											firstPage.drawText(
-												`Signed ${dayjs().format('M/d/YYYY HH:mm:ss ZZ')}`,
-												{
-													x: newX,
-													y: newY - 10,
-													size: 14 * scale,
-													color: rgb(0, 0, 0),
-												},
-											);
-										}
-
-										const pdfBytes = await pdfDoc.save();
-										const blob = new Blob([new Uint8Array(pdfBytes)]);
-
-										const URL = await blobToURL(blob);
-										setPdf(URL);
-										setPosition(null);
-										setSignatureURL(null);
-									}}
+									onSet={onSetDraggableSignature}
 									onEnd={setPosition}
 								/>
 							) : null}

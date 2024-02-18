@@ -2,8 +2,7 @@ import Enzyme from 'enzyme';
 import { shallow } from 'enzyme';
 import Adapter from '@cfaester/enzyme-adapter-react-18';
 import { Link } from 'react-router-dom';
-import  Navbar from '../src/components/Navbar.tsx';
-
+import Navbar from '../src/components/Navbar.tsx';
 
 Enzyme.configure({ adapter: new Adapter() });
 
