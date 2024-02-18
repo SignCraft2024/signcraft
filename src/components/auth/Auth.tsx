@@ -104,6 +104,7 @@ export const Auth: React.FC<AuthProps> = ({ isLogin }) => {
 							{formik.touched.password && formik.errors.password && (
 								<span className="error">{formik.errors.password}</span>
 							)}
+							<span>{error}</span>
 						</Stack>
 						<FormButton isLogin={isLogin} />
 					</Stack>
