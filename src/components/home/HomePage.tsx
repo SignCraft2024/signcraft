@@ -1,7 +1,7 @@
 import { Flex, Text, Button } from '@chakra-ui/react';
 import Hero from '../Hero';
 import Signature from '../../assets/signature.jpg';
-import { ROUTE_PDF_1 } from '../../utils/routes';
+import { ROUTE_PDF } from '../../utils/routes';
 import { useContext } from 'react';
 import { AuthContext } from '../../security/AuthProvider';
 
@@ -23,7 +23,7 @@ export default function Landing(props) {
 				subtitle="Fast and simple"
 				image={Signature}
 				ctaText="Sign your first document"
-				ctaLink={ROUTE_PDF_1}
+				ctaLink={ROUTE_PDF}
 			/>
 			<Flex
 				direction="column"

@@ -29,11 +29,11 @@ describe('Navbar Component', () => {
 		const wrapper = shallow(<Navbar />);
 		const menuItems = wrapper.find('MenuItem');
 
-		expect(menuItems).toHaveLength(5);
+		expect(menuItems).toHaveLength(4);
 
 		expect(menuItems.at(0).props().to).toBe('/');
 		expect(menuItems.at(1).props().to).toBe('/pdf');
-		expect(menuItems.at(2).props().to).toBe('/custom-pdf');
+		expect(menuItems.at(2).props().to).toBe('/history');
 	});
 
 	it('renders logout button', () => {
