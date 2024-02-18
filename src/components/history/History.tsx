@@ -1,7 +1,11 @@
-import { listAll, ref, StorageReference } from 'firebase/storage';
+import {
+	listAll,
+	ref,
+	StorageReference,
+	getDownloadURL,
+} from 'firebase/storage';
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../security/AuthProvider';
-import { storage } from '../../firebase/firebase';
 import {
 	Table,
 	Thead,
@@ -11,11 +15,27 @@ import {
 	Td,
 	TableCaption,
 	TableContainer,
+	Button,
 } from '@chakra-ui/react';
+import { storage } from '../../firebase/firebase';
 
 export function History() {
 	const { currentUser } = useContext(AuthContext);
 	const [files, setFiles] = useState<StorageReference[]>([]);
+
+	const openInNewTab = (url) => {
+		window.open(url, '_blank', 'noreferrer');
+	};
+
+	const download = (path: string) => {
+		getDownloadURL(ref(storage, path))
+			.then((url) => {
+				openInNewTab(url);
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	};
 
 	useEffect(() => {
 		const bucketRef = ref(storage, `/files/${currentUser.email}/`);
@@ -29,7 +49,6 @@ export function History() {
 			});
 	}, [currentUser]);
 
-	console.log(files[0]);
 	return (
 		<TableContainer>
 			<Table variant="simple">
@@ -42,7 +61,12 @@ export function History() {
 				<Tbody>
 					{files.map((file) => (
 						<Tr key={file.name}>
-							<Td key={file.name}>{file.name} </Td>
+							<Td>{file.name} </Td>
+							<Td>
+								<Button onClick={() => download(file.fullPath)}>
+									Download
+								</Button>
+							</Td>
 						</Tr>
 					))}
 				</Tbody>
